@@ -365,7 +365,28 @@ export const sdlc: Presentation = {
       ],
     },
 
-    // Slide 20: Code Review - All RPIR Active
+    // Slide 20: Prompt Request (Upfront) - All RPIR Active
+    {
+      type: 'process-step',
+      headline: 'Prompt Request (Upfront)',
+      sectionColor: 'green',
+      step: {
+        title: 'Review Before Implementation',
+        description: 'Human reviews user-story and plan upfront. Once accepted, implementation runs fully remote without interruption.',
+        input: { label: 'User Story + Plan', description: 'Intent & approach' },
+        output: { label: 'Approved Prompt', description: 'Ready for autonomous execution' },
+        agent: { name: 'Human Reviewer', action: 'Validates intent before code exists' },
+      },
+      rpirAllActive: true,
+      humanInLoop: true,
+      keyPoints: [
+        'Review intent, not implementation',
+        'Fully remote execution after approval',
+        'Continues user-story and plan artifacts',
+      ],
+    },
+
+    // Slide 21: Code Review - All RPIR Active
     {
       type: 'process-step',
       headline: 'Code Review',
@@ -387,7 +408,7 @@ export const sdlc: Presentation = {
       ],
     },
 
-    // Slide 21: Implementation Review
+    // Slide 22: Implementation Review
     {
       type: 'review',
       headline: 'Review: Implementation Complete',
@@ -411,7 +432,7 @@ export const sdlc: Presentation = {
     // SECTION 4: RETROSPECTIVE (4 slides) - Amber
     // ============================================
 
-    // Slide 22: Retrospective Overview
+    // Slide 23: Retrospective Overview
     {
       type: 'development-loop',
       headline: 'Phase 4: Retrospective',
@@ -426,7 +447,7 @@ export const sdlc: Presentation = {
       showRpir: true,
     },
 
-    // Slide 23: Sprint Retrospective - All RPIR Active
+    // Slide 24: Sprint Retrospective - All RPIR Active
     {
       type: 'process-step',
       headline: 'Sprint Retrospective',
@@ -447,7 +468,7 @@ export const sdlc: Presentation = {
       ],
     },
 
-    // Slide 24: Scrum Review - All RPIR Active
+    // Slide 25: Scrum Review - All RPIR Active
     {
       type: 'process-step',
       headline: 'Scrum Review',
@@ -468,7 +489,7 @@ export const sdlc: Presentation = {
       ],
     },
 
-    // Slide 25: Retrospective Review
+    // Slide 26: Retrospective Review
     {
       type: 'review',
       headline: 'Review: Retrospective Complete',
@@ -492,7 +513,7 @@ export const sdlc: Presentation = {
     // SECTION 5: CLOSING (2 slides)
     // ============================================
 
-    // Slide 26: Final Overview
+    // Slide 27: Final Overview
     {
       type: 'development-loop',
       headline: 'The Complete A-SDLC',
@@ -506,7 +527,7 @@ export const sdlc: Presentation = {
       showRpir: true,
     },
 
-    // Slide 27: Eat Sleep Loop Repeat (Standalone Closing)
+    // Slide 28: Eat Sleep Loop Repeat (Standalone Closing)
     {
       type: 'meme',
       headline: 'Eat Sleep Loop Repeat',
