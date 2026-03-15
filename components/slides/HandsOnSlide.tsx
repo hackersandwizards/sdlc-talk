@@ -10,28 +10,28 @@ interface Props {
 
 export function HandsOnSlide({ slide }: Props) {
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#FAFAFA] text-[#212121]">
       <div className="slide-content relative z-10 flex flex-col">
         {/* Header */}
-        <div className="pt-12 text-center">
+        <div className="pt-6 sm:pt-8 md:pt-12 text-center px-4">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#212121]">
               {slide.headline}
             </h1>
           </BlurFade>
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 items-center justify-center px-16 py-8">
-          <div className="flex w-full max-w-4xl flex-col gap-6">
+        <div className="flex flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 md:py-8 overflow-y-auto">
+          <div className="flex w-full max-w-4xl flex-col gap-4 sm:gap-5 md:gap-6">
           {/* What We're Building */}
           <BlurFade delay={0.3} duration={0.5}>
-            <div className="rounded-2xl border border-[#9333EA]/30 bg-gradient-to-br from-[#9333EA]/10 to-white p-8">
-              <div className="flex items-center gap-3 text-[#9333EA]">
-                <PackageX className="h-6 w-6" />
-                <h2 className="text-2xl font-semibold">What We&apos;re Building</h2>
+            <div className="rounded-xl sm:rounded-2xl border border-[#F59E0B]/30 bg-gradient-to-br from-[#F59E0B]/5 to-white p-4 sm:p-6 md:p-8">
+              <div className="flex items-center gap-2 sm:gap-3 text-[#F59E0B]">
+                <PackageX className="h-5 w-5 sm:h-6 sm:w-6" />
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">What We&apos;re Building</h2>
               </div>
-              <p className="mt-6 text-xl leading-relaxed text-gray-600">
+              <p className="mt-3 sm:mt-4 md:mt-6 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed text-[#6B7280]">
                 {slide.projectDescription}
               </p>
             </div>
@@ -39,24 +39,24 @@ export function HandsOnSlide({ slide }: Props) {
 
           {/* Procedure */}
           <BlurFade delay={0.5} duration={0.5}>
-            <div className="rounded-2xl border border-gray-200 bg-white p-8">
-              <div className="flex items-center gap-3 text-[#1A7285]">
-                <Users className="h-6 w-6" />
-                <h2 className="text-2xl font-semibold">Procedure</h2>
+            <div className="rounded-xl sm:rounded-2xl border border-gray-200 bg-white p-4 sm:p-6 md:p-8">
+              <div className="flex items-center gap-2 sm:gap-3 text-[#1A7285]">
+                <Users className="h-5 w-5 sm:h-6 sm:w-6" />
+                <h2 className="text-lg sm:text-xl md:text-2xl font-semibold">Procedure</h2>
               </div>
-              <ul className="mt-6 space-y-4">
+              <ul className="mt-3 sm:mt-4 md:mt-6 space-y-3 sm:space-y-4">
                 {slide.procedureItems.map((item, index) => {
                   const isLast = index === slide.procedureItems.length - 1;
                   return (
                     <BlurFade key={index} delay={0.6 + index * 0.15} duration={0.4}>
-                      <li className="flex items-start gap-4">
-                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1A7285]/20 text-sm font-bold text-[#1A7285]">
+                      <li className="flex items-start gap-3 sm:gap-4">
+                        <span className="flex h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 shrink-0 items-center justify-center rounded-full bg-[#1A7285]/20 text-xs sm:text-sm font-bold text-[#1A7285]">
                           {index + 1}
                         </span>
-                        <div className="flex flex-1 items-center gap-4 pt-1">
-                          <span className="text-lg text-gray-600">{item}</span>
+                        <div className="flex flex-1 flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 pt-0.5 sm:pt-1">
+                          <span className="text-sm sm:text-base md:text-lg text-[#6B7280]">{item}</span>
                           {isLast && slide.techNote && (
-                            <span className="rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-sm text-gray-500">
+                            <span className="rounded-md sm:rounded-lg border border-gray-200 bg-gray-100 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 text-xs sm:text-sm text-[#6B7280]">
                               {slide.techNote}
                             </span>
                           )}

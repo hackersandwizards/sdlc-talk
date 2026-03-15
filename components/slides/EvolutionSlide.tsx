@@ -29,7 +29,7 @@ export function EvolutionSlide({ slide }: Props) {
   }, [slide.stages.length]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#FAFAFA] text-[#212121]">
       <StaticLightRays
         className="opacity-70"
         color="rgba(26, 114, 133, 0.2)"
@@ -39,56 +39,56 @@ export function EvolutionSlide({ slide }: Props) {
 
       <div className="slide-content relative z-10 flex flex-col">
         {/* Header with headline */}
-        <div className="pt-12 text-center">
+        <div className="pt-6 sm:pt-8 md:pt-12 text-center px-4">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-6xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#212121]">
               {slide.headline}
             </h1>
           </BlurFade>
         </div>
 
         {/* Evolution stages */}
-        <div className="flex flex-1 items-center justify-center px-16 py-8">
-          <div className="flex items-center gap-6">
+        <div className="flex flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 md:py-8 overflow-y-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6">
             {slide.stages.map((stage, index) => (
-              <div key={index} className="flex items-center">
+              <div key={index} className="flex flex-col lg:flex-row items-center">
                 <BlurFade delay={0.2 + index * 0.2} duration={0.5}>
                   <div
-                    className={`relative flex h-72 w-80 flex-col rounded-2xl border p-8 backdrop-blur-sm transition-all duration-300 ${
+                    className={`relative flex h-auto w-full max-w-[280px] sm:max-w-[320px] sm:w-64 md:w-72 lg:w-80 flex-col rounded-xl sm:rounded-2xl border p-3 sm:p-6 md:p-8 backdrop-blur-sm transition-all duration-300 ${
                       activeIndex === index
-                        ? 'border-[#1A7285]/60 bg-gradient-to-br from-[#1A7285]/10 to-white/60'
-                        : 'border-gray-200 bg-white hover:border-[#1A7285]/40 hover:bg-gray-50'
+                        ? 'border-[#1A7285]/60 bg-gradient-to-br from-[#1A7285]/5 to-white'
+                        : 'border-gray-200 bg-white hover:border-[#1A7285]/30 hover:bg-gray-50'
                     }`}
                   >
                     {/* Multiplier badge */}
                     <div
-                      className={`absolute -top-5 left-1/2 -translate-x-1/2 rounded-full px-6 py-2 text-2xl font-bold ${
+                      className={`absolute -top-3 sm:-top-4 md:-top-5 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 md:px-6 md:py-2 text-sm sm:text-lg md:text-xl lg:text-2xl font-bold ${
                         activeIndex === index
-                          ? 'bg-gradient-to-r from-[#1A7285] to-[#1A7285]/80 text-white'
-                          : 'bg-gray-100 text-gray-600'
+                          ? 'bg-gradient-to-r from-[#1A7285] to-[#9333EA] text-white'
+                          : 'bg-gray-100 text-[#6B7280]'
                       }`}
                     >
                       {stage.multiplier}
                     </div>
 
-                    <div className="mt-6 flex flex-1 flex-col items-center justify-center text-center">
+                    <div className="mt-3 sm:mt-5 md:mt-6 flex flex-1 flex-col items-center justify-center text-center">
                       <h2
-                        className={`text-2xl font-bold leading-tight ${
-                          activeIndex === index ? 'text-gray-900' : 'text-gray-600'
+                        className={`text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-tight ${
+                          activeIndex === index ? 'text-[#212121]' : 'text-[#6B7280]'
                         }`}
                       >
                         {stage.title}
                       </h2>
                       <p
-                        className={`mt-3 text-xl font-medium ${
-                          activeIndex === index ? 'text-[#1A7285]' : 'text-gray-400'
+                        className={`mt-1.5 sm:mt-2 md:mt-3 text-sm sm:text-base md:text-lg lg:text-xl font-medium ${
+                          activeIndex === index ? 'text-[#1A7285]' : 'text-[#9CA3AF]'
                         }`}
                       >
                         {stage.subtitle}
                       </p>
                       <p
-                        className={`mt-4 text-lg leading-relaxed ${
-                          activeIndex === index ? 'text-gray-600' : 'text-gray-400'
+                        className={`mt-2 sm:mt-3 md:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed ${
+                          activeIndex === index ? 'text-[#6B7280]' : 'text-[#9CA3AF]'
                         }`}
                       >
                         {stage.description}
@@ -100,8 +100,8 @@ export function EvolutionSlide({ slide }: Props) {
                 {/* Arrow between stages */}
                 {index < slide.stages.length - 1 && (
                   <BlurFade delay={0.3 + index * 0.2} duration={0.5}>
-                    <div className="mx-4 flex items-center">
-                      <ArrowRight className="h-10 w-10 text-gray-300" />
+                    <div className="my-2 lg:my-0 lg:mx-2 xl:mx-4 flex items-center">
+                      <ArrowRight className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-[#9CA3AF] rotate-90 lg:rotate-0" />
                     </div>
                   </BlurFade>
                 )}

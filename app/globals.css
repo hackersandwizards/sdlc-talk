@@ -265,14 +265,14 @@
     overflow: hidden;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    background-color: #F8FAFB;
+    background-color: #FAFAFA;
   }
   html::-webkit-scrollbar,
   body::-webkit-scrollbar {
     display: none;
   }
   body {
-    @apply bg-[#F8FAFB] text-foreground;
+    @apply bg-[#FAFAFA] text-foreground;
     cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Ccircle cx='6' cy='6' r='3' fill='%231A7285' /%3E%3Ccircle cx='6' cy='6' r='4' fill='%231A7285' fill-opacity='0.4' /%3E%3Ccircle cx='6' cy='6' r='5' fill='%231A7285' fill-opacity='0.2' /%3E%3C/svg%3E") 6 6, auto;
   }
 
@@ -293,8 +293,15 @@
   color: #ffffff !important;
 }
 
-/* Slide content wrapper - fixed height on large screens, responsive on small */
+/* Slide content wrapper - responsive sizing */
 .slide-content {
-  height: min(100vh, 866px);
-  width: min(100vw, 1914px);
+  height: 100vh;
+  width: 100%;
+  max-width: 1914px;
+}
+
+@media (min-width: 1024px) {
+  .slide-content {
+    height: min(100vh, 866px);
+  }
 }

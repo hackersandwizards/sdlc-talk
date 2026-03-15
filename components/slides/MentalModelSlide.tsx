@@ -30,36 +30,36 @@ export function MentalModelSlide({ slide }: Props) {
   }, [slide.tips.length]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#FAFAFA] text-[#212121]">
       <StaticLightRays
         className="opacity-50"
-        color="rgba(26, 114, 133, 0.12)"
+        color="rgba(26, 114, 133, 0.2)"
         blur={60}
         length="90vh"
       />
 
       <div className="slide-content relative z-10 flex flex-col">
         {/* Header */}
-        <div className="pt-12 text-center">
+        <div className="pt-14 sm:pt-8 md:pt-12 text-center px-4">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-[#212121]">
               {slide.headline}
             </h1>
           </BlurFade>
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 flex-col items-center justify-center px-16 py-8">
+        <div className="flex flex-1 flex-col items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 md:py-8 overflow-y-auto">
           <div className="w-full max-w-5xl">
             {/* Intro */}
             <BlurFade delay={0.2} duration={0.5}>
-              <div className="mb-8 p-6 rounded-2xl border border-[#1A7285]/30 bg-gradient-to-br from-[#1A7285]/10 to-white">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-[#1A7285]/20">
-                    <Brain className="h-7 w-7 text-[#1A7285]" />
+              <div className="mb-4 sm:mb-6 md:mb-8 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-[#1A7285]/30 bg-gradient-to-br from-[#1A7285]/5 to-white">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-[#1A7285]/20">
+                    <Brain className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 text-[#1A7285]" />
                   </div>
-                  <div className="flex items-center min-h-14">
-                    <p className="text-xl text-gray-700 leading-relaxed">
+                  <div className="flex items-center min-h-10 sm:min-h-12 md:min-h-14">
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#6B7280] leading-relaxed">
                       {slide.intro}
                     </p>
                   </div>
@@ -69,10 +69,10 @@ export function MentalModelSlide({ slide }: Props) {
 
             {/* Warning */}
             <BlurFade delay={0.3} duration={0.5}>
-              <div className="mb-10 p-5 rounded-xl border border-[#F59E0B]/40 bg-gradient-to-br from-[#F59E0B]/10 to-white">
-                <div className="flex items-center gap-4">
-                  <AlertTriangle className="h-6 w-6 text-[#F59E0B] flex-shrink-0" />
-                  <p className="text-xl text-[#F59E0B] font-medium">
+              <div className="mb-6 sm:mb-8 md:mb-10 p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl border border-[#F59E0B]/40 bg-gradient-to-br from-[#F59E0B]/5 to-white">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <AlertTriangle className="h-5 w-5 sm:h-6 sm:w-6 text-[#F59E0B] flex-shrink-0" />
+                  <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#F59E0B] font-medium">
                     {slide.warning}
                   </p>
                 </div>
@@ -84,13 +84,13 @@ export function MentalModelSlide({ slide }: Props) {
               <div>
                 <p
                   className={cn(
-                    'text-base text-gray-400 uppercase tracking-wider mb-4 transition-opacity duration-300',
+                    'text-xs sm:text-sm md:text-base text-[#9CA3AF] uppercase tracking-wider mb-3 sm:mb-4 transition-opacity duration-300',
                     visibleCount > 0 ? 'opacity-100' : 'opacity-0'
                   )}
                 >
                   To preserve your mental model
                 </p>
-                <div className="space-y-4">
+                <div className="space-y-2 sm:space-y-3 md:space-y-4">
                   {slide.tips.map((tip, index) => {
                     const isActive = index < visibleCount;
 
@@ -98,22 +98,22 @@ export function MentalModelSlide({ slide }: Props) {
                       <div
                         key={index}
                         className={cn(
-                          'flex items-center gap-4 p-5 rounded-xl border transition-all duration-300',
+                          'flex items-center gap-3 sm:gap-4 p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl border transition-all duration-300',
                           isActive
                             ? 'border-[#1A7285]/30 bg-white'
-                            : 'border-gray-200 bg-white opacity-30'
+                            : 'border-gray-200 bg-gray-50 opacity-30'
                         )}
                       >
                         <CheckCircle
                           className={cn(
-                            'h-6 w-6 flex-shrink-0',
-                            isActive ? 'text-[#1A7285]' : 'text-gray-300'
+                            'h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0',
+                            isActive ? 'text-[#1A7285]' : 'text-[#9CA3AF]'
                           )}
                         />
                         <span
                           className={cn(
-                            'text-xl',
-                            isActive ? 'text-gray-700' : 'text-gray-300'
+                            'text-sm sm:text-base md:text-lg lg:text-xl',
+                            isActive ? 'text-[#6B7280]' : 'text-[#9CA3AF]'
                           )}
                         >
                           {tip}

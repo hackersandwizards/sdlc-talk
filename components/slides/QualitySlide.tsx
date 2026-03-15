@@ -30,36 +30,36 @@ export function QualitySlide({ slide }: Props) {
   }, [slide.checks.length]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#FAFAFA] text-[#212121]">
       <StaticLightRays
         className="opacity-60"
-        color="rgba(74, 222, 128, 0.15)"
+        color="rgba(26, 114, 133, 0.15)"
         blur={50}
         length="90vh"
       />
 
       <div className="slide-content relative z-10 flex flex-col">
         {/* Header */}
-        <div className="pt-12 text-center">
+        <div className="pt-6 sm:pt-8 md:pt-12 text-center px-4">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-[#212121]">
               {slide.headline}
             </h1>
           </BlurFade>
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 items-center justify-center px-16 py-8">
-          <div className="flex flex-col gap-8 w-full max-w-4xl">
+        <div className="flex flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 md:py-8 overflow-y-auto">
+          <div className="flex flex-col gap-4 sm:gap-6 md:gap-8 w-full max-w-4xl">
             {/* Goal Card */}
             <BlurFade delay={0.2} duration={0.5}>
-              <div className="flex items-center gap-6 p-8 rounded-2xl border border-emerald-300 bg-gradient-to-br from-emerald-50 to-white">
-                <div className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-emerald-500 to-green-500">
-                  <Target className="h-8 w-8 text-white" />
+              <div className="flex items-center gap-4 sm:gap-6 p-4 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border border-[#4ADE80]/30 bg-gradient-to-br from-[#4ADE80]/5 to-white">
+                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-r from-[#4ADE80] to-[#4ADE80]">
+                  <Target className="h-5 w-5 sm:h-6 sm:w-6 md:h-7 md:w-7 lg:h-8 lg:w-8 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs text-emerald-600 uppercase tracking-wider mb-1">Goal</p>
-                  <h2 className="text-2xl font-bold text-gray-900">
+                  <p className="text-[10px] sm:text-xs text-[#4ADE80] uppercase tracking-wider mb-0.5 sm:mb-1">Goal</p>
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-[#212121]">
                     {slide.goal}
                   </h2>
                 </div>
@@ -68,7 +68,7 @@ export function QualitySlide({ slide }: Props) {
 
             {/* Checklist */}
             <BlurFade delay={0.3} duration={0.5}>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3 md:gap-4">
                 {slide.checks.map((check, index) => {
                   const isActive = index < visibleCount;
 
@@ -76,22 +76,22 @@ export function QualitySlide({ slide }: Props) {
                     <div
                       key={index}
                       className={cn(
-                        'flex items-center gap-4 p-5 rounded-xl border transition-all duration-300',
+                        'flex items-center gap-2 sm:gap-3 md:gap-4 p-3 sm:p-4 md:p-5 rounded-lg sm:rounded-xl border transition-all duration-300',
                         isActive
-                          ? 'border-emerald-300 bg-white'
-                          : 'border-gray-200 bg-white opacity-30'
+                          ? 'border-[#4ADE80]/30 bg-white'
+                          : 'border-gray-200 bg-gray-50 opacity-30'
                       )}
                     >
                       <CheckCircle
                         className={cn(
-                          'flex-shrink-0 h-6 w-6',
-                          isActive ? 'text-emerald-500' : 'text-gray-300'
+                          'flex-shrink-0 h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6',
+                          isActive ? 'text-[#4ADE80]' : 'text-[#9CA3AF]'
                         )}
                       />
                       <span
                         className={cn(
-                          'text-lg',
-                          isActive ? 'text-gray-700' : 'text-gray-300'
+                          'text-sm sm:text-base md:text-lg',
+                          isActive ? 'text-[#6B7280]' : 'text-[#9CA3AF]'
                         )}
                       >
                         {check}
@@ -105,13 +105,13 @@ export function QualitySlide({ slide }: Props) {
             {/* How? CTA */}
             <div
               className={cn(
-                'mt-12 flex justify-center transition-all duration-500',
+                'mt-6 sm:mt-8 md:mt-12 flex justify-center transition-all duration-500',
                 visibleCount > slide.checks.length
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-4 pointer-events-none'
               )}
             >
-              <span className="text-3xl font-semibold text-emerald-600">
+              <span className="text-xl sm:text-2xl md:text-3xl font-semibold text-[#4ADE80]">
                 How?
               </span>
             </div>

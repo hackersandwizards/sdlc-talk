@@ -47,7 +47,7 @@ export function SpecGapSlide({ slide }: Props) {
   }, []);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#FAFAFA] text-[#212121]">
       <StaticLightRays
         className="opacity-60"
         color="rgba(239, 68, 68, 0.15)"
@@ -57,23 +57,23 @@ export function SpecGapSlide({ slide }: Props) {
 
       <div className="slide-content relative z-10 flex flex-col">
         {/* Header */}
-        <div className="pt-12 text-center">
+        <div className="pt-14 sm:pt-8 md:pt-12 text-center px-4">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="inline-flex items-center gap-4 text-6xl font-bold tracking-tight text-gray-900">
-              <AlertTriangle className="h-12 w-12 text-[#F59E0B]" />
-              {renderWithItalics(slide.headline)}
+            <h1 className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 md:gap-4 text-lg sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-[#212121]">
+              <AlertTriangle className="h-5 w-5 sm:h-7 sm:w-7 md:h-9 md:w-9 lg:h-10 lg:w-10 text-[#F59E0B] flex-shrink-0" />
+              <span>{renderWithItalics(slide.headline)}</span>
             </h1>
           </BlurFade>
         </div>
 
         {/* Main content */}
-        <div className="flex flex-1 items-center justify-center px-16 py-8">
+        <div className="flex flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 md:py-8 overflow-y-auto">
           <div className="w-full max-w-6xl">
             {/* The prompt */}
             <BlurFade delay={0.2} duration={0.5}>
-              <div className="mb-8 rounded-xl border border-gray-200 bg-white p-6">
-                <p className="text-lg text-gray-500 mb-2">Your prompt:</p>
-                <p className="text-2xl font-mono text-[#1A7285]">
+              <div className="mb-4 sm:mb-6 md:mb-8 rounded-lg sm:rounded-xl border border-gray-200 bg-white p-3 sm:p-4 md:p-6">
+                <p className="text-sm sm:text-base md:text-lg text-[#6B7280] mb-1 sm:mb-2">Your prompt:</p>
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-mono text-[#4ADE80]">
                   &quot;Add a Save button to the settings page&quot;
                 </p>
               </div>
@@ -81,13 +81,13 @@ export function SpecGapSlide({ slide }: Props) {
 
             {/* Points from slide data */}
             <BlurFade delay={0.3} duration={0.5}>
-              <div className="mb-8 space-y-3">
+              <div className="mb-4 sm:mb-6 md:mb-8 space-y-2 sm:space-y-3">
                 {slide.points.map((point, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-3 text-xl text-gray-600"
+                    className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base md:text-lg lg:text-xl text-[#6B7280]"
                   >
-                    <span className="text-[#F59E0B] mt-1">&rarr;</span>
+                    <span className="text-[#F59E0B] mt-0.5 sm:mt-1">&rarr;</span>
                     <span>{renderWithItalics(point)}</span>
                   </div>
                 ))}
@@ -96,36 +96,36 @@ export function SpecGapSlide({ slide }: Props) {
 
             {/* Specification gaps grid */}
             <BlurFade delay={0.4} duration={0.5}>
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3 md:gap-4">
                 {specificationGaps.map((gap, index) => (
                   <div
                     key={index}
-                    className={`rounded-xl border p-4 transition-all duration-300 ${
+                    className={`rounded-lg sm:rounded-xl border p-2 sm:p-3 md:p-4 transition-all duration-300 ${
                       index < visibleCount
-                        ? 'border-red-300 bg-red-50'
+                        ? 'border-[#EF4444]/30 bg-[#EF4444]/5'
                         : 'border-gray-200 bg-white opacity-30'
                     }`}
                   >
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center gap-1.5 sm:gap-2 mb-1 sm:mb-2">
                       <HelpCircle
-                        className={`h-5 w-5 ${
-                          index < visibleCount ? 'text-red-500' : 'text-gray-300'
+                        className={`h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 ${
+                          index < visibleCount ? 'text-[#EF4444]' : 'text-[#9CA3AF]'
                         }`}
                       />
                       <span
-                        className={`font-semibold ${
-                          index < visibleCount ? 'text-red-600' : 'text-gray-300'
+                        className={`font-semibold text-xs sm:text-sm ${
+                          index < visibleCount ? 'text-[#EF4444]' : 'text-[#9CA3AF]'
                         }`}
                       >
                         {gap.question}
                       </span>
                     </div>
-                    <div className="space-y-1">
+                    <div className="space-y-0.5 sm:space-y-1">
                       {gap.options.map((option, optIndex) => (
                         <p
                           key={optIndex}
-                          className={`text-sm ${
-                            index < visibleCount ? 'text-gray-500' : 'text-gray-300'
+                          className={`text-[10px] sm:text-xs md:text-sm ${
+                            index < visibleCount ? 'text-[#6B7280]' : 'text-[#9CA3AF]'
                           }`}
                         >
                           &bull; {option}

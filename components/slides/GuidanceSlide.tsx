@@ -30,37 +30,37 @@ export function GuidanceSlide({ slide }: Props) {
   }, [slide.examples.length]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#FAFAFA] text-[#212121]">
       <StaticLightRays
         className="opacity-50"
-        color="rgba(26, 114, 133, 0.12)"
+        color="rgba(26, 114, 133, 0.2)"
         blur={60}
         length="90vh"
       />
 
       <div className="slide-content relative z-10 flex flex-col">
         {/* Header */}
-        <div className="pt-12 text-center">
+        <div className="pt-14 sm:pt-8 md:pt-12 text-center px-4">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold tracking-tight text-[#212121]">
               {slide.headline}
             </h1>
           </BlurFade>
         </div>
 
         {/* Content */}
-        <div className="flex flex-1 flex-col items-center justify-center px-16 py-8">
+        <div className="flex flex-1 flex-col items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 md:py-8 overflow-y-auto">
           <div className="w-full max-w-6xl">
             {/* Intro */}
             <BlurFade delay={0.2} duration={0.5}>
-              <div className="mb-10 p-6 rounded-2xl border border-[#1A7285]/30 bg-gradient-to-br from-[#1A7285]/10 to-white">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-[#1A7285]/20">
-                    <BookOpen className="h-6 w-6 text-[#1A7285]" />
+              <div className="mb-6 sm:mb-8 md:mb-10 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl border border-[#1A7285]/30 bg-gradient-to-br from-[#1A7285]/5 to-white">
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 rounded-full bg-[#1A7285]/20">
+                    <BookOpen className="h-5 w-5 sm:h-5.5 sm:w-5.5 md:h-6 md:w-6 text-[#1A7285]" />
                   </div>
                   <div>
-                    <p className="text-xs text-[#1A7285] uppercase tracking-wider mb-1">Knowledge</p>
-                    <p className="text-xl text-gray-700 leading-relaxed">
+                    <p className="text-[10px] sm:text-xs text-[#1A7285] uppercase tracking-wider mb-0.5 sm:mb-1">Knowledge</p>
+                    <p className="text-sm sm:text-base md:text-lg lg:text-xl text-[#6B7280] leading-relaxed">
                       {slide.intro}
                     </p>
                   </div>
@@ -70,10 +70,10 @@ export function GuidanceSlide({ slide }: Props) {
 
             {/* Points */}
             <BlurFade delay={0.3} duration={0.5}>
-              <ul className="mb-10 space-y-4">
+              <ul className="mb-6 sm:mb-8 md:mb-10 space-y-2 sm:space-y-3 md:space-y-4">
                 {slide.points.map((point, index) => (
-                  <li key={index} className="flex items-start gap-3 text-xl text-gray-600">
-                    <span className="flex-shrink-0 w-2.5 h-2.5 mt-2.5 rounded-full bg-[#1A7285]" />
+                  <li key={index} className="flex items-start gap-2 sm:gap-3 text-sm sm:text-base md:text-lg lg:text-xl text-[#6B7280]">
+                    <span className="flex-shrink-0 w-2 h-2 sm:w-2.5 sm:h-2.5 mt-1.5 sm:mt-2 md:mt-2.5 rounded-full bg-[#1A7285]" />
                     {point}
                   </li>
                 ))}
@@ -82,21 +82,21 @@ export function GuidanceSlide({ slide }: Props) {
 
             {/* Code Examples Carousel */}
             <BlurFade delay={0.4} duration={0.5}>
-              <div className="rounded-2xl border border-[#1A7285]/30 bg-white p-6">
+              <div className="rounded-xl sm:rounded-2xl border border-[#1A7285]/30 bg-white p-3 sm:p-4 md:p-6">
                 {/* Carousel Header */}
-                <div className="flex items-center justify-between mb-6">
-                  <p className="text-sm text-gray-400 uppercase tracking-wider">
+                <div className="flex items-center justify-between mb-4 sm:mb-5 md:mb-6">
+                  <p className="text-xs sm:text-sm text-[#9CA3AF] uppercase tracking-wider">
                     Code Convention Examples
                   </p>
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 sm:gap-4">
                     {/* Navigation Dots */}
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1.5 sm:gap-2">
                       {slide.examples.map((_, index) => (
                         <button
                           key={index}
                           onClick={() => setCurrentExample(index)}
                           className={cn(
-                            'w-2.5 h-2.5 rounded-full transition-all duration-300',
+                            'w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full transition-all duration-300',
                             index === currentExample
                               ? 'bg-[#1A7285] scale-110'
                               : 'bg-gray-300 hover:bg-gray-400'
@@ -105,18 +105,18 @@ export function GuidanceSlide({ slide }: Props) {
                       ))}
                     </div>
                     {/* Navigation Arrows */}
-                    <div className="flex items-center gap-1">
+                    <div className="flex items-center gap-0.5 sm:gap-1">
                       <button
                         onClick={() => setCurrentExample((prev) => (prev - 1 + slide.examples.length) % slide.examples.length)}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#1A7285] hover:bg-gray-100 transition-colors"
+                        className="p-1 sm:p-1.5 rounded-lg text-[#6B7280] hover:text-[#1A7285] hover:bg-gray-100 transition-colors"
                       >
-                        <ChevronLeft className="h-5 w-5" />
+                        <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
                       <button
                         onClick={() => setCurrentExample((prev) => (prev + 1) % slide.examples.length)}
-                        className="p-1.5 rounded-lg text-gray-400 hover:text-[#1A7285] hover:bg-gray-100 transition-colors"
+                        className="p-1 sm:p-1.5 rounded-lg text-[#6B7280] hover:text-[#1A7285] hover:bg-gray-100 transition-colors"
                       >
-                        <ChevronRight className="h-5 w-5" />
+                        <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
                       </button>
                     </div>
                   </div>
@@ -135,30 +135,30 @@ export function GuidanceSlide({ slide }: Props) {
                       )}
                     >
                       {/* Example Title */}
-                      <h3 className="text-xl font-semibold text-[#1A7285] mb-5">
+                      <h3 className="text-base sm:text-lg md:text-xl font-semibold text-[#1A7285] mb-3 sm:mb-4 md:mb-5">
                         {example.title}
                       </h3>
 
                       {/* Bad vs Good */}
-                      <div className="grid grid-cols-2 gap-6 items-stretch">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 md:gap-6 items-stretch">
                         {/* Bad Example */}
-                        <div className="flex flex-col gap-3 h-full">
-                          <div className="flex items-center gap-2 text-red-500">
-                            <X className="h-5 w-5" />
-                            <span className="text-base font-medium">BAD</span>
+                        <div className="flex flex-col gap-2 sm:gap-3 h-full">
+                          <div className="flex items-center gap-1.5 sm:gap-2 text-[#EF4444]">
+                            <X className="h-4 w-4 sm:h-5 sm:w-5" />
+                            <span className="text-sm sm:text-base font-medium">BAD</span>
                           </div>
-                          <pre className="flex-1 p-4 rounded-lg bg-red-50 border border-red-200 text-base text-gray-600 whitespace-pre-wrap break-all min-h-[60px]">
+                          <pre className="flex-1 p-2 sm:p-3 md:p-4 rounded-lg bg-[#EF4444]/5 border border-[#EF4444]/20 text-xs sm:text-sm md:text-base text-[#6B7280] whitespace-pre-wrap break-all min-h-[50px] sm:min-h-[60px]">
                             <code>{example.bad}</code>
                           </pre>
                         </div>
 
                         {/* Good Example */}
-                        <div className="flex flex-col gap-3 h-full">
-                          <div className="flex items-center gap-2 text-green-600">
-                            <Check className="h-5 w-5" />
-                            <span className="text-base font-medium">GOOD</span>
+                        <div className="flex flex-col gap-2 sm:gap-3 h-full">
+                          <div className="flex items-center gap-1.5 sm:gap-2 text-[#4ADE80]">
+                            <Check className="h-4 w-4 sm:h-5 sm:w-5" />
+                            <span className="text-sm sm:text-base font-medium">GOOD</span>
                           </div>
-                          <pre className="flex-1 p-4 rounded-lg bg-green-50 border border-green-200 text-base text-gray-600 whitespace-pre-wrap break-all min-h-[60px]">
+                          <pre className="flex-1 p-2 sm:p-3 md:p-4 rounded-lg bg-[#4ADE80]/5 border border-[#4ADE80]/20 text-xs sm:text-sm md:text-base text-[#6B7280] whitespace-pre-wrap break-all min-h-[50px] sm:min-h-[60px]">
                             <code>{example.good}</code>
                           </pre>
                         </div>

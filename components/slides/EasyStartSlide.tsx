@@ -11,7 +11,7 @@ interface Props {
 
 export function EasyStartSlide({ slide }: Props) {
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#FAFAFA] text-[#212121]">
       <StaticLightRays
         className="opacity-60"
         color="rgba(26, 114, 133, 0.2)"
@@ -21,37 +21,37 @@ export function EasyStartSlide({ slide }: Props) {
 
       <div className="slide-content relative z-10 flex flex-col">
         {/* Header */}
-        <div className="pt-12 text-center">
+        <div className="pt-6 sm:pt-8 md:pt-12 text-center px-4">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-6xl font-bold tracking-tight text-gray-900">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#212121]">
               {slide.headline}
             </h1>
           </BlurFade>
         </div>
 
         {/* Terminal example */}
-        <div className="flex flex-1 items-center justify-center px-16 py-8">
+        <div className="flex flex-1 items-center justify-center px-2 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 md:py-8 overflow-hidden">
           <BlurFade delay={0.4} duration={0.6}>
-            <Terminal className="max-w-5xl w-full min-w-[700px] max-h-[500px] bg-white border-gray-200 text-lg">
-              <TypingAnimation delay={800} duration={30} className="text-[#1A7285] text-xl">
+            <Terminal className="w-full max-w-5xl min-w-0 max-h-[60vh] sm:max-h-[70vh] md:max-h-[500px] bg-white border-gray-200">
+              <TypingAnimation delay={800} duration={30} className="text-[#4ADE80] text-sm sm:text-base md:text-lg whitespace-pre-wrap break-words">
                 {`> Add a "Save" button to the settings page`}
               </TypingAnimation>
-              <AnimatedSpan delay={2500} className="text-gray-500 mt-6 text-lg">
+              <AnimatedSpan delay={2500} className="text-[#6B7280] mt-2 sm:mt-4 md:mt-6 text-xs sm:text-sm md:text-base">
                 Analyzing codebase...
               </AnimatedSpan>
-              <AnimatedSpan delay={3200} className="text-gray-500 text-lg">
+              <AnimatedSpan delay={3200} className="text-[#6B7280] text-xs sm:text-sm md:text-base whitespace-pre-wrap break-words">
                 Found settings page at src/pages/Settings.tsx
               </AnimatedSpan>
-              <AnimatedSpan delay={4000} className="text-[#1A7285] mt-4 text-lg">
+              <AnimatedSpan delay={4000} className="text-[#1A7285] mt-2 sm:mt-3 md:mt-4 text-xs sm:text-sm md:text-base">
                 + Added Button component import
               </AnimatedSpan>
-              <AnimatedSpan delay={4600} className="text-[#1A7285] text-lg">
+              <AnimatedSpan delay={4600} className="text-[#1A7285] text-xs sm:text-sm md:text-base">
                 + Created handleSave function
               </AnimatedSpan>
-              <AnimatedSpan delay={5200} className="text-[#1A7285] text-lg">
+              <AnimatedSpan delay={5200} className="text-[#1A7285] text-xs sm:text-sm md:text-base whitespace-pre-wrap break-words">
                 + Added Save button with onClick handler
               </AnimatedSpan>
-              <AnimatedSpan delay={6000} className="text-[#4ADE80] mt-6 font-semibold text-xl">
+              <AnimatedSpan delay={6000} className="text-[#4ADE80] mt-2 sm:mt-4 md:mt-6 font-semibold text-sm sm:text-base md:text-lg whitespace-pre-wrap break-words">
                 Done! The Save button has been added.
               </AnimatedSpan>
             </Terminal>
