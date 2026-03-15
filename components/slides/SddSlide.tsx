@@ -13,10 +13,10 @@ const stepIcons = [MessageSquare, FileText, Code, CheckCircle];
 
 export function SddSlide({ slide }: Props) {
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-60"
-        color="rgba(59, 130, 246, 0.15)"
+        color="rgba(26, 114, 133, 0.15)"
         blur={50}
         length="90vh"
       />
@@ -25,7 +25,7 @@ export function SddSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -36,30 +36,30 @@ export function SddSlide({ slide }: Props) {
           <div className="flex flex-col gap-6 w-full max-w-4xl">
             {/* Simplified note */}
             <BlurFade delay={0.15} duration={0.5}>
-              <p className="text-sm text-slate-500 uppercase tracking-wider mb-2 text-center">-- Simplified --</p>
+              <p className="text-sm text-gray-400 uppercase tracking-wider mb-2 text-center">-- Simplified --</p>
             </BlurFade>
             {slide.steps.map((step, index) => {
               const Icon = stepIcons[index] || CheckCircle;
 
               return (
                 <BlurFade key={index} delay={0.2 + index * 0.15} duration={0.5}>
-                  <div className="relative flex items-start gap-6 p-6 rounded-xl border border-slate-700/40 bg-slate-900/40 hover:border-blue-500/40 hover:bg-slate-900/60 transition-all duration-300">
+                  <div className="relative flex items-start gap-6 p-6 rounded-xl border border-gray-200 bg-white hover:border-[#1A7285]/40 hover:bg-gray-50 transition-all duration-300">
                     {/* Step number */}
-                    <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-2xl font-bold">
+                    <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-r from-[#1A7285] to-[#1A7285]/80 text-white text-2xl font-bold">
                       {index + 1}
                     </div>
 
                     {/* Icon */}
-                    <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-lg bg-slate-800/60">
-                      <Icon className="h-7 w-7 text-blue-400" />
+                    <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-lg bg-gray-50">
+                      <Icon className="h-7 w-7 text-[#1A7285]" />
                     </div>
 
                     {/* Content */}
                     <div className="flex-1">
-                      <h2 className="text-2xl font-bold text-white mb-2">
+                      <h2 className="text-2xl font-bold text-gray-900 mb-2">
                         {step.title}
                       </h2>
-                      <p className="text-lg text-slate-400">
+                      <p className="text-lg text-gray-500">
                         {step.description}
                       </p>
                     </div>
@@ -74,7 +74,7 @@ export function SddSlide({ slide }: Props) {
         {slide.footer && (
           <BlurFade delay={0.6} duration={0.5}>
             <div className="pb-8 text-center">
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-gray-400">
                 {slide.footer}
                 {slide.footerLink && (
                   <>
@@ -83,7 +83,7 @@ export function SddSlide({ slide }: Props) {
                       href={slide.footerLink.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 underline"
+                      className="text-[#1A7285] hover:text-[#1A7285]/80 underline"
                     >
                       {slide.footerLink.label}
                     </a>

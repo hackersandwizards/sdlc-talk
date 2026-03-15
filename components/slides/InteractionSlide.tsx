@@ -28,7 +28,7 @@ const iconMap = {
   test: TestTube,
 };
 
-const defaultColor = { bg: 'bg-violet-500/20', text: 'text-violet-400', border: 'border-violet-500/50', activeBg: 'bg-violet-950/30' };
+const defaultColor = { bg: 'bg-[#9333EA]/20', text: 'text-[#9333EA]', border: 'border-[#9333EA]/50', activeBg: 'bg-[#9333EA]/10' };
 
 const colorMap = {
   eye: defaultColor,
@@ -58,10 +58,10 @@ export function InteractionSlide({ slide }: Props) {
   }, [slide.capabilities.length]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-50"
-        color="rgba(6, 182, 212, 0.12)"
+        color="rgba(26, 114, 133, 0.12)"
         blur={60}
         length="90vh"
       />
@@ -70,7 +70,7 @@ export function InteractionSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -81,14 +81,14 @@ export function InteractionSlide({ slide }: Props) {
           <div className="w-full max-w-5xl">
             {/* Problem Statement */}
             <BlurFade delay={0.2} duration={0.5}>
-              <div className="mb-10 p-6 rounded-2xl border border-red-500/30 bg-gradient-to-br from-red-950/30 to-slate-900/60">
+              <div className="mb-10 p-6 rounded-2xl border border-red-300 bg-gradient-to-br from-red-50 to-white">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-500/20">
-                    <AlertTriangle className="h-6 w-6 text-red-400" />
+                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-red-100">
+                    <AlertTriangle className="h-6 w-6 text-red-500" />
                   </div>
                   <div>
-                    <p className="text-xs text-red-400 uppercase tracking-wider mb-1">The Problem</p>
-                    <p className="text-xl text-slate-200 leading-relaxed">
+                    <p className="text-xs text-red-500 uppercase tracking-wider mb-1">The Problem</p>
+                    <p className="text-xl text-gray-700 leading-relaxed">
                       {slide.problem}
                     </p>
                   </div>
@@ -98,7 +98,7 @@ export function InteractionSlide({ slide }: Props) {
 
             {/* Solution Statement */}
             <BlurFade delay={0.25} duration={0.5}>
-              <p className="text-center text-slate-400 text-lg mb-2">
+              <p className="text-center text-gray-500 text-lg mb-2">
                 We want to enable the Coding Agent to...
               </p>
             </BlurFade>
@@ -118,20 +118,20 @@ export function InteractionSlide({ slide }: Props) {
                         'p-5 rounded-xl border transition-all duration-300 h-[120px] flex items-center',
                         isActive
                           ? cn(colors.border, colors.activeBg)
-                          : 'border-slate-700/30 bg-slate-900/30 opacity-30'
+                          : 'border-gray-200 bg-white opacity-30'
                       )}
                     >
                       <div className="flex items-center gap-4 w-full">
                         <div
                           className={cn(
                             'flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-lg',
-                            isActive ? colors.bg : 'bg-slate-800/50'
+                            isActive ? colors.bg : 'bg-gray-100'
                           )}
                         >
                           <Icon
                             className={cn(
                               'h-6 w-6',
-                              isActive ? colors.text : 'text-slate-600'
+                              isActive ? colors.text : 'text-gray-300'
                             )}
                           />
                         </div>
@@ -139,7 +139,7 @@ export function InteractionSlide({ slide }: Props) {
                           <h3
                             className={cn(
                               'font-semibold text-lg',
-                              isActive ? 'text-white' : 'text-slate-600'
+                              isActive ? 'text-gray-900' : 'text-gray-300'
                             )}
                           >
                             {capability.title}
@@ -147,7 +147,7 @@ export function InteractionSlide({ slide }: Props) {
                           <p
                             className={cn(
                               'text-sm mt-0.5',
-                              isActive ? 'text-slate-400' : 'text-slate-700'
+                              isActive ? 'text-gray-500' : 'text-gray-300'
                             )}
                           >
                             {capability.description}
@@ -169,7 +169,7 @@ export function InteractionSlide({ slide }: Props) {
                   : 'opacity-0 translate-y-4 pointer-events-none'
               )}
             >
-              <span className="text-3xl font-semibold text-violet-400">
+              <span className="text-3xl font-semibold text-[#9333EA]">
                 How?
               </span>
             </div>

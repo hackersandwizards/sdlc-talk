@@ -47,7 +47,7 @@ export function SpecGapSlide({ slide }: Props) {
   }, []);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-60"
         color="rgba(239, 68, 68, 0.15)"
@@ -59,8 +59,8 @@ export function SpecGapSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="inline-flex items-center gap-4 text-6xl font-bold tracking-tight text-white">
-              <AlertTriangle className="h-12 w-12 text-amber-400" />
+            <h1 className="inline-flex items-center gap-4 text-6xl font-bold tracking-tight text-gray-900">
+              <AlertTriangle className="h-12 w-12 text-[#F59E0B]" />
               {renderWithItalics(slide.headline)}
             </h1>
           </BlurFade>
@@ -71,9 +71,9 @@ export function SpecGapSlide({ slide }: Props) {
           <div className="w-full max-w-6xl">
             {/* The prompt */}
             <BlurFade delay={0.2} duration={0.5}>
-              <div className="mb-8 rounded-xl border border-slate-700/50 bg-slate-900/60 p-6">
-                <p className="text-lg text-slate-400 mb-2">Your prompt:</p>
-                <p className="text-2xl font-mono text-green-400">
+              <div className="mb-8 rounded-xl border border-gray-200 bg-white p-6">
+                <p className="text-lg text-gray-500 mb-2">Your prompt:</p>
+                <p className="text-2xl font-mono text-[#1A7285]">
                   &quot;Add a Save button to the settings page&quot;
                 </p>
               </div>
@@ -85,9 +85,9 @@ export function SpecGapSlide({ slide }: Props) {
                 {slide.points.map((point, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-3 text-xl text-slate-300"
+                    className="flex items-start gap-3 text-xl text-gray-600"
                   >
-                    <span className="text-amber-400 mt-1">→</span>
+                    <span className="text-[#F59E0B] mt-1">&rarr;</span>
                     <span>{renderWithItalics(point)}</span>
                   </div>
                 ))}
@@ -102,19 +102,19 @@ export function SpecGapSlide({ slide }: Props) {
                     key={index}
                     className={`rounded-xl border p-4 transition-all duration-300 ${
                       index < visibleCount
-                        ? 'border-red-500/50 bg-red-950/30'
-                        : 'border-slate-700/30 bg-slate-900/30 opacity-30'
+                        ? 'border-red-300 bg-red-50'
+                        : 'border-gray-200 bg-white opacity-30'
                     }`}
                   >
                     <div className="flex items-center gap-2 mb-2">
                       <HelpCircle
                         className={`h-5 w-5 ${
-                          index < visibleCount ? 'text-red-400' : 'text-slate-600'
+                          index < visibleCount ? 'text-red-500' : 'text-gray-300'
                         }`}
                       />
                       <span
                         className={`font-semibold ${
-                          index < visibleCount ? 'text-red-300' : 'text-slate-600'
+                          index < visibleCount ? 'text-red-600' : 'text-gray-300'
                         }`}
                       >
                         {gap.question}
@@ -125,10 +125,10 @@ export function SpecGapSlide({ slide }: Props) {
                         <p
                           key={optIndex}
                           className={`text-sm ${
-                            index < visibleCount ? 'text-slate-400' : 'text-slate-700'
+                            index < visibleCount ? 'text-gray-500' : 'text-gray-300'
                           }`}
                         >
-                          • {option}
+                          &bull; {option}
                         </p>
                       ))}
                     </div>

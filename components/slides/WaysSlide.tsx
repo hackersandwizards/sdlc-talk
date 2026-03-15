@@ -29,10 +29,10 @@ export function WaysSlide({ slide }: Props) {
   }, [slide.ways.length]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-60"
-        color="rgba(99, 102, 241, 0.2)"
+        color="rgba(147, 51, 234, 0.2)"
         blur={50}
         length="90vh"
       />
@@ -41,7 +41,7 @@ export function WaysSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-6xl font-bold tracking-tight text-white">
+            <h1 className="text-6xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -55,8 +55,8 @@ export function WaysSlide({ slide }: Props) {
                 <div
                   className={`relative min-h-[520px] flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
                     activeIndex === index
-                      ? 'border-indigo-400/60 bg-gradient-to-br from-indigo-950/60 to-slate-900/60 scale-105'
-                      : 'border-slate-700/40 bg-slate-900/40 hover:border-indigo-500/40 hover:bg-slate-900/60'
+                      ? 'border-[#9333EA]/60 bg-gradient-to-br from-[#9333EA]/10 to-white scale-105'
+                      : 'border-gray-200 bg-white hover:border-[#9333EA]/40 hover:bg-gray-50'
                   }`}
                 >
                   {/* Badge in top right */}
@@ -64,8 +64,8 @@ export function WaysSlide({ slide }: Props) {
                     <span
                       className={`absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium ${
                         activeIndex === index
-                          ? 'bg-indigo-500/30 text-indigo-300 border border-indigo-400/50'
-                          : 'bg-slate-800 text-slate-500 border border-slate-700'
+                          ? 'bg-[#9333EA]/20 text-[#9333EA] border border-[#9333EA]/50'
+                          : 'bg-gray-100 text-gray-400 border border-gray-200'
                       }`}
                     >
                       {way.badge}
@@ -76,8 +76,8 @@ export function WaysSlide({ slide }: Props) {
                   <div
                     className={`inline-flex items-center justify-center w-12 h-12 rounded-full text-2xl font-bold ${
                       activeIndex === index
-                        ? 'bg-gradient-to-r from-indigo-500 to-purple-500 text-white'
-                        : 'bg-slate-800 text-slate-400'
+                        ? 'bg-gradient-to-r from-[#9333EA] to-[#9333EA]/80 text-white'
+                        : 'bg-gray-100 text-gray-400'
                     }`}
                   >
                     {index + 1}
@@ -86,7 +86,7 @@ export function WaysSlide({ slide }: Props) {
                   {/* Title - fixed height */}
                   <h2
                     className={`text-2xl font-bold mt-4 h-8 ${
-                      activeIndex === index ? 'text-white' : 'text-slate-300'
+                      activeIndex === index ? 'text-gray-900' : 'text-gray-600'
                     }`}
                   >
                     {way.title}
@@ -97,7 +97,7 @@ export function WaysSlide({ slide }: Props) {
                     {way.description && (
                       <p
                         className={`text-lg ${
-                          activeIndex === index ? 'text-slate-300' : 'text-slate-500'
+                          activeIndex === index ? 'text-gray-600' : 'text-gray-400'
                         }`}
                       >
                         {way.description}
@@ -111,8 +111,8 @@ export function WaysSlide({ slide }: Props) {
                       <div
                         className={`rounded-lg border p-3 font-mono text-base ${
                           activeIndex === index
-                            ? 'border-slate-600 bg-slate-800/80 text-green-400'
-                            : 'border-slate-700/50 bg-slate-900/50 text-slate-500'
+                            ? 'border-gray-300 bg-gray-50 text-[#1A7285]'
+                            : 'border-gray-200 bg-white text-gray-400'
                         }`}
                       >
                         <span className="opacity-60">&gt; </span>
@@ -130,11 +130,11 @@ export function WaysSlide({ slide }: Props) {
                           <div
                             key={proIndex}
                             className={`flex items-start gap-2 ${
-                              activeIndex === index ? 'text-green-400' : 'text-slate-600'
+                              activeIndex === index ? 'text-green-600' : 'text-gray-300'
                             }`}
                           >
                             <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                            <span className={activeIndex === index ? 'text-slate-300' : 'text-slate-500'}>
+                            <span className={activeIndex === index ? 'text-gray-600' : 'text-gray-400'}>
                               {pro}
                             </span>
                           </div>
@@ -149,11 +149,11 @@ export function WaysSlide({ slide }: Props) {
                           <div
                             key={conIndex}
                             className={`flex items-start gap-2 ${
-                              activeIndex === index ? 'text-red-400' : 'text-slate-600'
+                              activeIndex === index ? 'text-red-500' : 'text-gray-300'
                             }`}
                           >
                             <X className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                            <span className={activeIndex === index ? 'text-slate-300' : 'text-slate-500'}>
+                            <span className={activeIndex === index ? 'text-gray-600' : 'text-gray-400'}>
                               {con}
                             </span>
                           </div>
@@ -166,8 +166,8 @@ export function WaysSlide({ slide }: Props) {
                       <div
                         className={`mt-4 pt-4 border-t text-center font-medium ${
                           activeIndex === index
-                            ? 'border-indigo-500/30 text-indigo-400'
-                            : 'border-slate-700/30 text-slate-500'
+                            ? 'border-[#9333EA]/30 text-[#9333EA]'
+                            : 'border-gray-200 text-gray-400'
                         }`}
                       >
                         {way.highlight}
@@ -184,7 +184,7 @@ export function WaysSlide({ slide }: Props) {
         {slide.footer && (
           <BlurFade delay={0.5} duration={0.5}>
             <div className="pb-8 text-center">
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-gray-400">
                 {slide.footer}
               </p>
             </div>

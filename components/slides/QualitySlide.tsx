@@ -30,10 +30,10 @@ export function QualitySlide({ slide }: Props) {
   }, [slide.checks.length]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-60"
-        color="rgba(34, 197, 94, 0.15)"
+        color="rgba(74, 222, 128, 0.15)"
         blur={50}
         length="90vh"
       />
@@ -42,7 +42,7 @@ export function QualitySlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -53,13 +53,13 @@ export function QualitySlide({ slide }: Props) {
           <div className="flex flex-col gap-8 w-full max-w-4xl">
             {/* Goal Card */}
             <BlurFade delay={0.2} duration={0.5}>
-              <div className="flex items-center gap-6 p-8 rounded-2xl border border-emerald-500/40 bg-gradient-to-br from-emerald-950/40 to-slate-900/60">
+              <div className="flex items-center gap-6 p-8 rounded-2xl border border-emerald-300 bg-gradient-to-br from-emerald-50 to-white">
                 <div className="flex-shrink-0 flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-r from-emerald-500 to-green-500">
                   <Target className="h-8 w-8 text-white" />
                 </div>
                 <div>
-                  <p className="text-xs text-emerald-400 uppercase tracking-wider mb-1">Goal</p>
-                  <h2 className="text-2xl font-bold text-white">
+                  <p className="text-xs text-emerald-600 uppercase tracking-wider mb-1">Goal</p>
+                  <h2 className="text-2xl font-bold text-gray-900">
                     {slide.goal}
                   </h2>
                 </div>
@@ -78,20 +78,20 @@ export function QualitySlide({ slide }: Props) {
                       className={cn(
                         'flex items-center gap-4 p-5 rounded-xl border transition-all duration-300',
                         isActive
-                          ? 'border-emerald-500/40 bg-slate-900/60'
-                          : 'border-slate-700/30 bg-slate-900/30 opacity-30'
+                          ? 'border-emerald-300 bg-white'
+                          : 'border-gray-200 bg-white opacity-30'
                       )}
                     >
                       <CheckCircle
                         className={cn(
                           'flex-shrink-0 h-6 w-6',
-                          isActive ? 'text-emerald-400' : 'text-slate-600'
+                          isActive ? 'text-emerald-500' : 'text-gray-300'
                         )}
                       />
                       <span
                         className={cn(
                           'text-lg',
-                          isActive ? 'text-slate-200' : 'text-slate-600'
+                          isActive ? 'text-gray-700' : 'text-gray-300'
                         )}
                       >
                         {check}
@@ -111,7 +111,7 @@ export function QualitySlide({ slide }: Props) {
                   : 'opacity-0 translate-y-4 pointer-events-none'
               )}
             >
-              <span className="text-3xl font-semibold text-emerald-400">
+              <span className="text-3xl font-semibold text-emerald-600">
                 How?
               </span>
             </div>

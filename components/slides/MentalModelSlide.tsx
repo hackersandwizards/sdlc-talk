@@ -30,10 +30,10 @@ export function MentalModelSlide({ slide }: Props) {
   }, [slide.tips.length]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-50"
-        color="rgba(59, 130, 246, 0.12)"
+        color="rgba(26, 114, 133, 0.12)"
         blur={60}
         length="90vh"
       />
@@ -42,7 +42,7 @@ export function MentalModelSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -53,13 +53,13 @@ export function MentalModelSlide({ slide }: Props) {
           <div className="w-full max-w-5xl">
             {/* Intro */}
             <BlurFade delay={0.2} duration={0.5}>
-              <div className="mb-8 p-6 rounded-2xl border border-blue-500/30 bg-gradient-to-br from-blue-950/30 to-slate-900/60">
+              <div className="mb-8 p-6 rounded-2xl border border-[#1A7285]/30 bg-gradient-to-br from-[#1A7285]/10 to-white">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-blue-500/20">
-                    <Brain className="h-7 w-7 text-blue-400" />
+                  <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-[#1A7285]/20">
+                    <Brain className="h-7 w-7 text-[#1A7285]" />
                   </div>
                   <div className="flex items-center min-h-14">
-                    <p className="text-xl text-slate-200 leading-relaxed">
+                    <p className="text-xl text-gray-700 leading-relaxed">
                       {slide.intro}
                     </p>
                   </div>
@@ -69,10 +69,10 @@ export function MentalModelSlide({ slide }: Props) {
 
             {/* Warning */}
             <BlurFade delay={0.3} duration={0.5}>
-              <div className="mb-10 p-5 rounded-xl border border-amber-500/40 bg-gradient-to-br from-amber-950/30 to-slate-900/60">
+              <div className="mb-10 p-5 rounded-xl border border-[#F59E0B]/40 bg-gradient-to-br from-[#F59E0B]/10 to-white">
                 <div className="flex items-center gap-4">
-                  <AlertTriangle className="h-6 w-6 text-amber-400 flex-shrink-0" />
-                  <p className="text-xl text-amber-200 font-medium">
+                  <AlertTriangle className="h-6 w-6 text-[#F59E0B] flex-shrink-0" />
+                  <p className="text-xl text-[#F59E0B] font-medium">
                     {slide.warning}
                   </p>
                 </div>
@@ -84,7 +84,7 @@ export function MentalModelSlide({ slide }: Props) {
               <div>
                 <p
                   className={cn(
-                    'text-base text-slate-500 uppercase tracking-wider mb-4 transition-opacity duration-300',
+                    'text-base text-gray-400 uppercase tracking-wider mb-4 transition-opacity duration-300',
                     visibleCount > 0 ? 'opacity-100' : 'opacity-0'
                   )}
                 >
@@ -100,20 +100,20 @@ export function MentalModelSlide({ slide }: Props) {
                         className={cn(
                           'flex items-center gap-4 p-5 rounded-xl border transition-all duration-300',
                           isActive
-                            ? 'border-blue-500/30 bg-slate-900/50'
-                            : 'border-slate-700/30 bg-slate-900/30 opacity-30'
+                            ? 'border-[#1A7285]/30 bg-white'
+                            : 'border-gray-200 bg-white opacity-30'
                         )}
                       >
                         <CheckCircle
                           className={cn(
                             'h-6 w-6 flex-shrink-0',
-                            isActive ? 'text-blue-400' : 'text-slate-600'
+                            isActive ? 'text-[#1A7285]' : 'text-gray-300'
                           )}
                         />
                         <span
                           className={cn(
                             'text-xl',
-                            isActive ? 'text-slate-200' : 'text-slate-600'
+                            isActive ? 'text-gray-700' : 'text-gray-300'
                           )}
                         >
                           {tip}

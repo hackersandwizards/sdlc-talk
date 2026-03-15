@@ -103,10 +103,10 @@ export function QuestionSlide({ slide }: Props) {
   }, [slide.options.length, cursorIndex, increment, decrement, reset]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-70"
-        color="rgba(34, 211, 238, 0.2)"
+        color="rgba(26, 114, 133, 0.2)"
         blur={50}
         length="90vh"
       />
@@ -115,7 +115,7 @@ export function QuestionSlide({ slide }: Props) {
         {/* Header with headline */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-6xl font-bold tracking-tight text-white">
+            <h1 className="text-6xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -132,18 +132,18 @@ export function QuestionSlide({ slide }: Props) {
                 <BlurFade key={index} delay={0.2 + index * 0.15} duration={0.5}>
                   <div
                     onClick={() => increment(index)}
-                    className={`flex cursor-pointer items-center gap-8 rounded-2xl border p-8 backdrop-blur-sm transition-all hover:border-cyan-400/30 ${
+                    className={`flex cursor-pointer items-center gap-8 rounded-2xl border p-8 backdrop-blur-sm transition-all hover:border-[#1A7285]/30 ${
                       isHighlighted
-                        ? 'border-cyan-400/50 bg-cyan-950/40'
-                        : 'border-slate-700/30 bg-slate-900/30'
+                        ? 'border-[#1A7285]/50 bg-[#1A7285]/10'
+                        : 'border-gray-200 bg-white'
                     }`}
                   >
                     {/* Letter badge */}
                     <div
                       className={`flex h-16 w-16 shrink-0 items-center justify-center rounded-xl text-3xl font-bold ${
                         isHighlighted
-                          ? 'bg-cyan-500/30 text-cyan-300'
-                          : 'bg-slate-800/50 text-slate-500'
+                          ? 'bg-[#1A7285]/30 text-[#1A7285]'
+                          : 'bg-gray-100 text-gray-400'
                       }`}
                     >
                       {option.label}
@@ -153,7 +153,7 @@ export function QuestionSlide({ slide }: Props) {
                     <div className="flex-1">
                       <p
                         className={`text-2xl font-medium ${
-                          isHighlighted ? 'text-white' : 'text-slate-400'
+                          isHighlighted ? 'text-gray-900' : 'text-gray-500'
                         }`}
                       >
                         {option.text}
@@ -166,14 +166,14 @@ export function QuestionSlide({ slide }: Props) {
                         <div
                           className={`flex h-14 min-w-14 items-center justify-center rounded-full px-4 text-2xl font-bold ${
                             isHighlighted
-                              ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white'
-                              : 'bg-slate-700 text-slate-300'
+                              ? 'bg-gradient-to-r from-[#1A7285] to-[#1A7285]/80 text-white'
+                              : 'bg-gray-200 text-gray-600'
                           }`}
                         >
                           <NumberTicker
                             value={count}
                             className={
-                              isHighlighted ? 'text-white' : 'text-slate-300'
+                              isHighlighted ? 'text-white' : 'text-gray-600'
                             }
                           />
                         </div>

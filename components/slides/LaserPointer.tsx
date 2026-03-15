@@ -13,8 +13,8 @@ interface Stroke {
 }
 
 const FADE_DURATION = 2000; // 2 seconds to fully fade
-const LASER_COLOR = 'rgba(255, 50, 50, 1)';
-const LASER_GLOW_COLOR = 'rgba(255, 100, 100, 0.6)';
+const LASER_COLOR = 'rgba(26, 114, 133, 1)';
+const LASER_GLOW_COLOR = 'rgba(26, 114, 133, 0.6)';
 const LINE_WIDTH = 4;
 
 // Text elements where we want to allow selection
@@ -85,11 +85,11 @@ export function LaserPointer() {
 
       if (stroke.points.length > 1) {
         ctx.beginPath();
-        ctx.strokeStyle = `rgba(255, 50, 50, ${opacity})`;
+        ctx.strokeStyle = `rgba(26, 114, 133, ${opacity})`;
         ctx.lineWidth = LINE_WIDTH;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
-        ctx.shadowColor = `rgba(255, 100, 100, ${opacity * 0.6})`;
+        ctx.shadowColor = `rgba(26, 114, 133, ${opacity * 0.6})`;
         ctx.shadowBlur = 10;
 
         ctx.moveTo(stroke.points[0].x, stroke.points[0].y);

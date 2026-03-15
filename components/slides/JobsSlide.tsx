@@ -30,10 +30,10 @@ export function JobsSlide({ slide }: Props) {
   }, []);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-50"
-        color="rgba(139, 92, 246, 0.12)"
+        color="rgba(147, 51, 234, 0.12)"
         blur={60}
         length="90vh"
       />
@@ -42,7 +42,7 @@ export function JobsSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -54,18 +54,18 @@ export function JobsSlide({ slide }: Props) {
             <div className="flex items-center gap-8">
               {/* Before Column */}
               <BlurFade delay={0.2} duration={0.5} className="flex-1">
-                <div className="p-6 rounded-2xl border border-slate-600/40 bg-slate-900/50">
-                  <h2 className="text-xl font-semibold text-slate-400 mb-6 uppercase tracking-wider">
+                <div className="p-6 rounded-2xl border border-gray-200 bg-white">
+                  <h2 className="text-xl font-semibold text-gray-500 mb-6 uppercase tracking-wider">
                     {slide.before.title}
                   </h2>
                   <div className="space-y-3">
                     {slide.before.items.map((item, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-3 p-4 rounded-lg bg-slate-800/50"
+                        className="flex items-center gap-3 p-4 rounded-lg bg-gray-50"
                       >
-                        <div className="w-2 h-2 rounded-full bg-slate-500" />
-                        <span className="text-lg text-slate-300">{item.task}</span>
+                        <div className="w-2 h-2 rounded-full bg-gray-400" />
+                        <span className="text-lg text-gray-600">{item.task}</span>
                       </div>
                     ))}
                   </div>
@@ -75,7 +75,7 @@ export function JobsSlide({ slide }: Props) {
               {/* Arrow */}
               <BlurFade delay={0.3} duration={0.5}>
                 <div className="flex-shrink-0">
-                  <ArrowRight className="w-12 h-12 text-violet-400" />
+                  <ArrowRight className="w-12 h-12 text-[#9333EA]" />
                 </div>
               </BlurFade>
 
@@ -87,22 +87,22 @@ export function JobsSlide({ slide }: Props) {
                 )}
               >
                 <BlurFade delay={0.4} duration={0.5}>
-                  <div className="p-6 rounded-2xl border border-violet-500/40 bg-gradient-to-br from-violet-950/30 to-slate-900/60">
-                    <h2 className="text-xl font-semibold text-violet-400 mb-6 uppercase tracking-wider">
+                  <div className="p-6 rounded-2xl border border-[#9333EA]/40 bg-gradient-to-br from-[#9333EA]/10 to-white">
+                    <h2 className="text-xl font-semibold text-[#9333EA] mb-6 uppercase tracking-wider">
                       {slide.after.title}
                     </h2>
                     <div className="space-y-3">
                       {slide.after.items.map((item, index) => (
                         <div
                           key={index}
-                          className="flex items-center justify-between gap-3 p-4 rounded-lg bg-slate-800/30"
+                          className="flex items-center justify-between gap-3 p-4 rounded-lg bg-white/50"
                         >
                           <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-full bg-violet-400" />
-                            <span className="text-lg text-slate-200">{item.task}</span>
+                            <div className="w-2 h-2 rounded-full bg-[#9333EA]" />
+                            <span className="text-lg text-gray-700">{item.task}</span>
                           </div>
                           {item.percentage !== undefined && (
-                            <span className="text-2xl font-bold text-violet-400">
+                            <span className="text-2xl font-bold text-[#9333EA]">
                               {item.percentage}%
                             </span>
                           )}
@@ -120,7 +120,7 @@ export function JobsSlide({ slide }: Props) {
         {slide.footnote && (
           <BlurFade delay={0.5} duration={0.5}>
             <div className="pb-8 text-center">
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-gray-400">
                 * {slide.footnote}
               </p>
             </div>

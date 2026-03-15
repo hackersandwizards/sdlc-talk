@@ -65,10 +65,10 @@ export function DevelopmentLoopSlide({ slide }: Props) {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-50"
-        color="rgba(59, 130, 246, 0.15)"
+        color="rgba(26, 114, 133, 0.15)"
         blur={60}
         length="90vh"
       />
@@ -77,11 +77,11 @@ export function DevelopmentLoopSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
             {slide.subtitle && (
-              <p className="mt-4 text-xl text-slate-400">{slide.subtitle}</p>
+              <p className="mt-4 text-xl text-gray-500">{slide.subtitle}</p>
             )}
           </BlurFade>
         </div>
@@ -138,7 +138,7 @@ export function DevelopmentLoopSlide({ slide }: Props) {
                       cx={centerX}
                       cy={centerY}
                       r={innerRadius}
-                      stroke="#475569"
+                      stroke="#d1d5db"
                       strokeWidth={2}
                       fill="none"
                       strokeDasharray="4 4"
@@ -150,7 +150,7 @@ export function DevelopmentLoopSlide({ slide }: Props) {
                       x={centerX}
                       y={centerY - 30}
                       textAnchor="middle"
-                      className="fill-slate-400 text-xs font-medium"
+                      className="fill-gray-500 text-xs font-medium"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: 1.2 }}
@@ -161,7 +161,7 @@ export function DevelopmentLoopSlide({ slide }: Props) {
                       x={centerX}
                       y={centerY - 10}
                       textAnchor="middle"
-                      className="fill-slate-300 text-sm font-bold"
+                      className="fill-gray-600 text-sm font-bold"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.5, delay: 1.2 }}
@@ -260,13 +260,13 @@ export function DevelopmentLoopSlide({ slide }: Props) {
                         <p
                           className={cn(
                             'font-bold',
-                            isHighlighted ? 'text-lg' : 'text-base text-slate-400'
+                            isHighlighted ? 'text-lg' : 'text-base text-gray-500'
                           )}
                           style={isHighlighted ? { color } : undefined}
                         >
                           {phase.title}
                         </p>
-                        <p className="text-xs text-slate-500">
+                        <p className="text-xs text-gray-400">
                           {phase.output}
                         </p>
                       </div>

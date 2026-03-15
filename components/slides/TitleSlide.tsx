@@ -11,19 +11,19 @@ interface Props {
 
 export function TitleSlide({ slide }: Props) {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-slate-950">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#F8FAFB]">
       <Particles
         className="absolute inset-0"
         quantity={80}
-        color="#ffffff"
+        color="#1A7285"
         size={0.6}
         staticity={30}
       />
       <div className="slide-content relative z-10 flex flex-col items-center justify-center">
         <BlurFade delay={0.2} duration={0.8}>
           <SparklesText
-            className="text-6xl md:text-7xl font-bold tracking-tight text-white text-center whitespace-pre-line"
-            colors={{ first: '#9E7AFF', second: '#38bdf8' }}
+            className="text-6xl md:text-7xl font-bold tracking-tight text-gray-900 text-center whitespace-pre-line"
+            colors={{ first: '#1A7285', second: '#9333EA' }}
             sparklesCount={12}
           >
             {slide.title}
@@ -31,7 +31,7 @@ export function TitleSlide({ slide }: Props) {
         </BlurFade>
         {slide.subtitle && (
           <BlurFade delay={0.5} duration={0.6}>
-            <p className="mt-8 text-3xl font-light text-zinc-400">
+            <p className="mt-8 text-3xl font-light text-gray-500">
               {slide.subtitle}
             </p>
           </BlurFade>

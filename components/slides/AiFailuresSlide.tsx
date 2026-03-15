@@ -31,10 +31,10 @@ export function AiFailuresSlide({ slide }: Props) {
   }, [maxSteps]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-60"
-        color="rgba(251, 146, 60, 0.15)"
+        color="rgba(147, 51, 234, 0.15)"
         blur={50}
         length="90vh"
       />
@@ -44,8 +44,8 @@ export function AiFailuresSlide({ slide }: Props) {
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
             <div className="flex items-center justify-center gap-4 mb-4">
-              <AlertTriangle className="h-10 w-10 text-orange-400" />
-              <h1 className="text-5xl font-bold tracking-tight text-white">
+              <AlertTriangle className="h-10 w-10 text-[#9333EA]" />
+              <h1 className="text-5xl font-bold tracking-tight text-gray-900">
                 {slide.headline}
               </h1>
             </div>
@@ -57,7 +57,7 @@ export function AiFailuresSlide({ slide }: Props) {
           <div className="flex flex-col gap-8 w-full max-w-4xl">
             {/* Intro */}
             <BlurFade delay={0.2} duration={0.5}>
-              <p className="text-2xl text-slate-300 text-center">
+              <p className="text-2xl text-gray-600 text-center">
                 {slide.intro}
               </p>
             </BlurFade>
@@ -83,23 +83,23 @@ export function AiFailuresSlide({ slide }: Props) {
                         <span
                           className={cn(
                             'text-4xl font-bold',
-                            isLarge ? 'text-orange-400' : 'text-amber-500'
+                            isLarge ? 'text-[#9333EA]' : 'text-[#1A7285]'
                           )}
                         >
                           {reason.percentage}%
                         </span>
-                        <span className="text-xl text-slate-200">
+                        <span className="text-xl text-gray-700">
                           {reason.label}
                         </span>
                       </div>
                       {/* Progress Bar */}
-                      <div className="h-4 bg-slate-800 rounded-full overflow-hidden">
+                      <div className="h-4 bg-gray-100 rounded-full overflow-hidden">
                         <div
                           className={cn(
                             'h-full rounded-full transition-all duration-700',
                             isLarge
-                              ? 'bg-gradient-to-r from-orange-500 to-amber-400'
-                              : 'bg-gradient-to-r from-amber-600 to-yellow-500'
+                              ? 'bg-gradient-to-r from-[#9333EA] to-[#9333EA]/70'
+                              : 'bg-gradient-to-r from-[#1A7285] to-[#1A7285]/70'
                           )}
                           style={{
                             width: isVisible ? `${reason.percentage}%` : '0%',
@@ -108,7 +108,7 @@ export function AiFailuresSlide({ slide }: Props) {
                         />
                       </div>
                       {reason.description && (
-                        <p className="mt-2 text-sm text-slate-400 italic">
+                        <p className="mt-2 text-sm text-gray-400 italic">
                           {reason.description}
                         </p>
                       )}
@@ -123,11 +123,11 @@ export function AiFailuresSlide({ slide }: Props) {
               className={cn(
                 'mt-8 p-6 rounded-xl border transition-all duration-500',
                 visibleCount > slide.reasons.length
-                  ? 'opacity-100 translate-y-0 border-amber-500/40 bg-gradient-to-br from-amber-950/30 to-slate-900/60'
+                  ? 'opacity-100 translate-y-0 border-[#9333EA]/40 bg-gradient-to-br from-[#9333EA]/10 to-white'
                   : 'opacity-0 translate-y-4 pointer-events-none border-transparent'
               )}
             >
-              <p className="text-2xl font-semibold text-amber-300 text-center">
+              <p className="text-2xl font-semibold text-[#9333EA] text-center">
                 {slide.conclusion}
               </p>
             </div>
@@ -138,7 +138,7 @@ export function AiFailuresSlide({ slide }: Props) {
         {slide.footnote && (
           <BlurFade delay={0.4} duration={0.5}>
             <div className="pb-8 text-center">
-              <p className="text-sm text-slate-500">
+              <p className="text-sm text-gray-400">
                 * {slide.footnote}
               </p>
             </div>

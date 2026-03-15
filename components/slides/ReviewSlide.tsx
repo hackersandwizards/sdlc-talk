@@ -12,10 +12,10 @@ interface Props {
 }
 
 const lightRayColors: Record<string, string> = {
-  violet: 'rgba(139, 92, 246, 0.15)',
-  teal: 'rgba(6, 182, 212, 0.15)',
-  green: 'rgba(34, 197, 94, 0.15)',
-  amber: 'rgba(245, 158, 11, 0.15)',
+  violet: 'rgba(147, 51, 234, 0.15)',
+  teal: 'rgba(26, 114, 133, 0.15)',
+  green: 'rgba(74, 222, 128, 0.15)',
+  amber: 'rgba(147, 51, 234, 0.15)',
 };
 
 export function ReviewSlide({ slide }: Props) {
@@ -23,7 +23,7 @@ export function ReviewSlide({ slide }: Props) {
   const lightRayColor = lightRayColors[slide.sectionColor];
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-50"
         color={lightRayColor}
@@ -44,7 +44,7 @@ export function ReviewSlide({ slide }: Props) {
                 {slide.sectionName} Complete
               </div>
             </div>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -58,7 +58,7 @@ export function ReviewSlide({ slide }: Props) {
               <div className={cn(
                 'rounded-2xl border p-8 h-full',
                 colors.border,
-                'bg-slate-900/50'
+                'bg-white'
               )}>
                 <div className="flex items-center gap-3 mb-6">
                   <div className={cn(
@@ -67,13 +67,13 @@ export function ReviewSlide({ slide }: Props) {
                   )}>
                     <CheckCircle2 className={cn('h-5 w-5', colors.primary)} />
                   </div>
-                  <h2 className="text-xl font-bold text-white">Accomplished</h2>
+                  <h2 className="text-xl font-bold text-gray-900">Accomplished</h2>
                 </div>
                 <ul className="space-y-3">
                   {slide.recap.map((item, index) => (
                     <li key={index} className="flex items-start gap-3">
                       <CheckCircle2 className={cn('h-5 w-5 mt-0.5 flex-shrink-0', colors.primary)} />
-                      <span className="text-slate-300">{item}</span>
+                      <span className="text-gray-600">{item}</span>
                     </li>
                   ))}
                 </ul>
@@ -88,7 +88,7 @@ export function ReviewSlide({ slide }: Props) {
                   <div className={cn(
                     'rounded-2xl border p-6',
                     colors.border,
-                    'bg-slate-900/50'
+                    'bg-white'
                   )}>
                     <div className="flex items-center gap-3 mb-4">
                       <div className={cn(
@@ -97,7 +97,7 @@ export function ReviewSlide({ slide }: Props) {
                       )}>
                         <Package className={cn('h-5 w-5', colors.primary)} />
                       </div>
-                      <h2 className="text-xl font-bold text-white">Artifacts</h2>
+                      <h2 className="text-xl font-bold text-gray-900">Artifacts</h2>
                     </div>
                     <div className="flex flex-wrap gap-2">
                       {slide.artifacts.map((artifact, index) => (
@@ -122,18 +122,18 @@ export function ReviewSlide({ slide }: Props) {
               {/* Learnings */}
               {slide.learnings && slide.learnings.length > 0 && (
                 <BlurFade delay={0.4} duration={0.5}>
-                  <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-6">
+                  <div className="rounded-2xl border border-[#F59E0B]/30 bg-[#F59E0B]/5 p-6">
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-amber-500/20">
-                        <Lightbulb className="h-5 w-5 text-amber-400" />
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#F59E0B]/20">
+                        <Lightbulb className="h-5 w-5 text-[#F59E0B]" />
                       </div>
-                      <h2 className="text-xl font-bold text-white">Learnings Captured</h2>
+                      <h2 className="text-xl font-bold text-gray-900">Learnings Captured</h2>
                     </div>
                     <ul className="space-y-2">
                       {slide.learnings.map((learning, index) => (
                         <li key={index} className="flex items-start gap-2">
-                          <span className="text-amber-400">•</span>
-                          <span className="text-amber-100/80">{learning}</span>
+                          <span className="text-[#F59E0B]">&bull;</span>
+                          <span className="text-gray-600">{learning}</span>
                         </li>
                       ))}
                     </ul>
@@ -144,21 +144,21 @@ export function ReviewSlide({ slide }: Props) {
               {/* Next Section Preview */}
               {slide.nextSection && (
                 <BlurFade delay={0.5} duration={0.5}>
-                  <div className="rounded-2xl border border-emerald-500/30 bg-emerald-500/10 p-6">
+                  <div className="rounded-2xl border border-emerald-300 bg-emerald-50 p-6">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm font-medium text-emerald-400 uppercase tracking-wider">
+                        <p className="text-sm font-medium text-emerald-600 uppercase tracking-wider">
                           Coming Next
                         </p>
-                        <h3 className="text-xl font-bold text-white mt-1">
+                        <h3 className="text-xl font-bold text-gray-900 mt-1">
                           {slide.nextSection.name}
                         </h3>
-                        <p className="text-sm text-emerald-100/70 mt-1">
+                        <p className="text-sm text-gray-500 mt-1">
                           {slide.nextSection.preview}
                         </p>
                       </div>
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/20">
-                        <ArrowRight className="h-6 w-6 text-emerald-400" />
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-100">
+                        <ArrowRight className="h-6 w-6 text-emerald-600" />
                       </div>
                     </div>
                   </div>

@@ -29,10 +29,10 @@ export function EvolutionSlide({ slide }: Props) {
   }, [slide.stages.length]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-70"
-        color="rgba(34, 211, 238, 0.2)"
+        color="rgba(26, 114, 133, 0.2)"
         blur={50}
         length="90vh"
       />
@@ -41,7 +41,7 @@ export function EvolutionSlide({ slide }: Props) {
         {/* Header with headline */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-6xl font-bold tracking-tight text-white">
+            <h1 className="text-6xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -56,16 +56,16 @@ export function EvolutionSlide({ slide }: Props) {
                   <div
                     className={`relative flex h-72 w-80 flex-col rounded-2xl border p-8 backdrop-blur-sm transition-all duration-300 ${
                       activeIndex === index
-                        ? 'border-cyan-400/60 bg-gradient-to-br from-cyan-950/60 to-slate-900/60'
-                        : 'border-slate-700/40 bg-slate-900/40 hover:border-cyan-500/40 hover:bg-slate-900/60'
+                        ? 'border-[#1A7285]/60 bg-gradient-to-br from-[#1A7285]/10 to-white/60'
+                        : 'border-gray-200 bg-white hover:border-[#1A7285]/40 hover:bg-gray-50'
                     }`}
                   >
                     {/* Multiplier badge */}
                     <div
                       className={`absolute -top-5 left-1/2 -translate-x-1/2 rounded-full px-6 py-2 text-2xl font-bold ${
                         activeIndex === index
-                          ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white'
-                          : 'bg-slate-800 text-slate-300'
+                          ? 'bg-gradient-to-r from-[#1A7285] to-[#1A7285]/80 text-white'
+                          : 'bg-gray-100 text-gray-600'
                       }`}
                     >
                       {stage.multiplier}
@@ -74,21 +74,21 @@ export function EvolutionSlide({ slide }: Props) {
                     <div className="mt-6 flex flex-1 flex-col items-center justify-center text-center">
                       <h2
                         className={`text-2xl font-bold leading-tight ${
-                          activeIndex === index ? 'text-white' : 'text-slate-300'
+                          activeIndex === index ? 'text-gray-900' : 'text-gray-600'
                         }`}
                       >
                         {stage.title}
                       </h2>
                       <p
                         className={`mt-3 text-xl font-medium ${
-                          activeIndex === index ? 'text-cyan-400' : 'text-slate-500'
+                          activeIndex === index ? 'text-[#1A7285]' : 'text-gray-400'
                         }`}
                       >
                         {stage.subtitle}
                       </p>
                       <p
                         className={`mt-4 text-lg leading-relaxed ${
-                          activeIndex === index ? 'text-slate-300' : 'text-slate-500'
+                          activeIndex === index ? 'text-gray-600' : 'text-gray-400'
                         }`}
                       >
                         {stage.description}
@@ -101,7 +101,7 @@ export function EvolutionSlide({ slide }: Props) {
                 {index < slide.stages.length - 1 && (
                   <BlurFade delay={0.3 + index * 0.2} duration={0.5}>
                     <div className="mx-4 flex items-center">
-                      <ArrowRight className="h-10 w-10 text-slate-600" />
+                      <ArrowRight className="h-10 w-10 text-gray-300" />
                     </div>
                   </BlurFade>
                 )}

@@ -52,10 +52,10 @@ export function VsSlide({ slide }: Props) {
   ];
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-60"
-        color="rgba(99, 102, 241, 0.2)"
+        color="rgba(147, 51, 234, 0.2)"
         blur={50}
         length="90vh"
       />
@@ -64,7 +64,7 @@ export function VsSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-6xl font-bold tracking-tight text-white">
+            <h1 className="text-6xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -78,14 +78,14 @@ export function VsSlide({ slide }: Props) {
                 <div
                   className={`relative h-full flex flex-col rounded-2xl border p-8 transition-all duration-300 ${
                     activeIndex === index
-                      ? 'border-indigo-400/60 bg-gradient-to-br from-indigo-950/60 to-slate-900/60 scale-105'
-                      : 'border-slate-700/40 bg-slate-900/40 hover:border-indigo-500/40 hover:bg-slate-900/60'
+                      ? 'border-[#9333EA]/60 bg-gradient-to-br from-[#9333EA]/10 to-white scale-105'
+                      : 'border-gray-200 bg-white hover:border-[#9333EA]/40 hover:bg-gray-50'
                   }`}
                 >
                   {/* Header section */}
                   <div className="flex flex-col items-center mb-6">
                     <tool.Logo />
-                    <h2 className={`text-2xl font-bold mt-2 ${activeIndex === index ? 'text-white' : 'text-slate-300'}`}>
+                    <h2 className={`text-2xl font-bold mt-2 ${activeIndex === index ? 'text-gray-900' : 'text-gray-600'}`}>
                       {tool.data.name}
                     </h2>
                   </div>
@@ -95,12 +95,12 @@ export function VsSlide({ slide }: Props) {
                     {/* Pros */}
                     <div className="space-y-3 mb-6">
                       {tool.data.pros.map((pro, proIndex) => (
-                        <div key={proIndex} className={`flex items-start gap-3 ${activeIndex === index ? 'text-green-400' : 'text-slate-600'}`}>
+                        <div key={proIndex} className={`flex items-start gap-3 ${activeIndex === index ? 'text-green-600' : 'text-gray-300'}`}>
                           <Check className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                          <span className={`text-lg ${activeIndex === index ? 'text-slate-300' : 'text-slate-500'}`}>
+                          <span className={`text-lg ${activeIndex === index ? 'text-gray-600' : 'text-gray-400'}`}>
                             {pro}
                             {proIndex === 0 && tool.data.highlight && (
-                              <span className={`ml-2 text-sm italic ${activeIndex === index ? 'text-indigo-400' : 'text-slate-600'}`}>
+                              <span className={`ml-2 text-sm italic ${activeIndex === index ? 'text-[#9333EA]' : 'text-gray-300'}`}>
                                 ({tool.data.highlight})
                               </span>
                             )}
@@ -115,9 +115,9 @@ export function VsSlide({ slide }: Props) {
                     {/* Cons */}
                     <div className="space-y-3">
                       {tool.data.cons.map((con, conIndex) => (
-                        <div key={conIndex} className={`flex items-start gap-3 ${activeIndex === index ? 'text-red-400' : 'text-slate-600'}`}>
+                        <div key={conIndex} className={`flex items-start gap-3 ${activeIndex === index ? 'text-red-500' : 'text-gray-300'}`}>
                           <X className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                          <span className={`text-lg ${activeIndex === index ? 'text-slate-300' : 'text-slate-500'}`}>
+                          <span className={`text-lg ${activeIndex === index ? 'text-gray-600' : 'text-gray-400'}`}>
                             {con}
                           </span>
                         </div>
@@ -135,7 +135,7 @@ export function VsSlide({ slide }: Props) {
           <BlurFade delay={0.5} duration={0.5}>
             <div className="pb-8 text-center space-y-1">
               {slide.footnotes.map((footnote, index) => (
-                <p key={index} className="text-sm text-slate-500">
+                <p key={index} className="text-sm text-gray-400">
                   {footnote}
                 </p>
               ))}

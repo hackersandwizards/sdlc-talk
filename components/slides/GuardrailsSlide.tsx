@@ -32,10 +32,10 @@ export function GuardrailsSlide({ slide }: Props) {
   }, [maxSteps]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-50"
-        color="rgba(168, 85, 247, 0.12)"
+        color="rgba(147, 51, 234, 0.12)"
         blur={60}
         length="90vh"
       />
@@ -44,7 +44,7 @@ export function GuardrailsSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -55,14 +55,14 @@ export function GuardrailsSlide({ slide }: Props) {
           <div className="w-full max-w-5xl">
             {/* Intro */}
             <BlurFade delay={0.2} duration={0.5}>
-              <div className="mb-8 p-6 rounded-2xl border border-purple-500/30 bg-gradient-to-br from-purple-950/30 to-slate-900/60">
+              <div className="mb-8 p-6 rounded-2xl border border-[#9333EA]/30 bg-gradient-to-br from-[#9333EA]/10 to-white">
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-purple-500/20">
-                    <Shield className="h-6 w-6 text-purple-400" />
+                  <div className="flex-shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-[#9333EA]/20">
+                    <Shield className="h-6 w-6 text-[#9333EA]" />
                   </div>
                   <div>
-                    <p className="text-xs text-purple-400 uppercase tracking-wider mb-1">Tooling</p>
-                    <p className="text-xl text-slate-200 leading-relaxed">
+                    <p className="text-xs text-[#9333EA] uppercase tracking-wider mb-1">Tooling</p>
+                    <p className="text-xl text-gray-700 leading-relaxed">
                       {slide.intro}
                     </p>
                   </div>
@@ -74,8 +74,8 @@ export function GuardrailsSlide({ slide }: Props) {
             <BlurFade delay={0.3} duration={0.5}>
               <ul className="mb-10 space-y-4">
                 {slide.points.map((point, index) => (
-                  <li key={index} className="flex items-start gap-3 text-lg text-slate-300">
-                    <CheckCircle className="flex-shrink-0 w-5 h-5 mt-0.5 text-purple-400" />
+                  <li key={index} className="flex items-start gap-3 text-lg text-gray-600">
+                    <CheckCircle className="flex-shrink-0 w-5 h-5 mt-0.5 text-[#9333EA]" />
                     {point}
                   </li>
                 ))}
@@ -85,7 +85,7 @@ export function GuardrailsSlide({ slide }: Props) {
             {/* Sub-Agents Section */}
             <BlurFade delay={0.4} duration={0.5}>
               <div>
-                <p className="text-sm text-slate-500 uppercase tracking-wider mb-4">
+                <p className="text-sm text-gray-400 uppercase tracking-wider mb-4">
                   Skeptical Sub-Agents for Reviews
                 </p>
                 <div className="grid grid-cols-3 gap-4">
@@ -98,28 +98,28 @@ export function GuardrailsSlide({ slide }: Props) {
                         className={cn(
                           'p-5 rounded-xl border transition-all duration-500',
                           isVisible
-                            ? 'border-purple-500/40 bg-gradient-to-br from-purple-950/40 to-slate-900/60 translate-y-0 opacity-100'
-                            : 'border-slate-700/20 bg-slate-900/20 translate-y-4 opacity-30'
+                            ? 'border-[#9333EA]/40 bg-gradient-to-br from-[#9333EA]/10 to-white translate-y-0 opacity-100'
+                            : 'border-gray-200 bg-white translate-y-4 opacity-30'
                         )}
                       >
                         <div className="flex flex-col items-center text-center">
                           <div
                             className={cn(
                               'flex items-center justify-center w-16 h-16 rounded-full mb-4 transition-colors duration-300',
-                              isVisible ? 'bg-purple-500/20' : 'bg-slate-800/50'
+                              isVisible ? 'bg-[#9333EA]/20' : 'bg-gray-100'
                             )}
                           >
                             <Bot
                               className={cn(
                                 'h-8 w-8 transition-colors duration-300',
-                                isVisible ? 'text-purple-400' : 'text-slate-600'
+                                isVisible ? 'text-[#9333EA]' : 'text-gray-300'
                               )}
                             />
                           </div>
                           <h3
                             className={cn(
                               'font-semibold text-lg mb-2 transition-colors duration-300',
-                              isVisible ? 'text-white' : 'text-slate-600'
+                              isVisible ? 'text-gray-900' : 'text-gray-300'
                             )}
                           >
                             {agent.name}
@@ -127,7 +127,7 @@ export function GuardrailsSlide({ slide }: Props) {
                           <p
                             className={cn(
                               'text-sm transition-colors duration-300',
-                              isVisible ? 'text-slate-400' : 'text-slate-700'
+                              isVisible ? 'text-gray-500' : 'text-gray-300'
                             )}
                           >
                             {agent.description}
@@ -148,7 +148,7 @@ export function GuardrailsSlide({ slide }: Props) {
                         : 'opacity-0 translate-y-4'
                     )}
                   >
-                    <p className="text-xl font-medium text-purple-300 italic">
+                    <p className="text-xl font-medium text-[#9333EA] italic">
                       {slide.bottomStatement}
                     </p>
                   </div>

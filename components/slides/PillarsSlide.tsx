@@ -13,10 +13,10 @@ const pillarIcons = [Brain, Shield, Wrench];
 
 export function PillarsSlide({ slide }: Props) {
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-60"
-        color="rgba(234, 179, 8, 0.15)"
+        color="rgba(147, 51, 234, 0.15)"
         blur={50}
         length="90vh"
       />
@@ -25,7 +25,7 @@ export function PillarsSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -43,13 +43,13 @@ export function PillarsSlide({ slide }: Props) {
                   <div
                     className={`relative flex flex-col items-center text-center w-64 p-8 rounded-2xl border transition-all duration-300 ${
                       isFocused
-                        ? 'border-amber-400/60 bg-gradient-to-br from-amber-950/40 to-slate-900/60 scale-105'
-                        : 'border-slate-700/40 bg-slate-900/40 hover:border-amber-500/40 hover:bg-slate-900/60'
+                        ? 'border-[#9333EA]/60 bg-gradient-to-br from-[#9333EA]/10 to-white/60 scale-105'
+                        : 'border-gray-200 bg-white hover:border-[#9333EA]/40 hover:bg-gray-50'
                     }`}
                   >
                     {/* Focus indicator */}
                     {isFocused && !slide.allActive && (
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-amber-500 text-slate-900 text-xs font-bold rounded-full">
+                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-[#9333EA] text-white text-xs font-bold rounded-full">
                         UP NEXT
                       </div>
                     )}
@@ -58,8 +58,8 @@ export function PillarsSlide({ slide }: Props) {
                     <div
                       className={`flex items-center justify-center w-16 h-16 rounded-full text-3xl font-bold mb-4 ${
                         isFocused
-                          ? 'bg-gradient-to-r from-amber-500 to-orange-500 text-white'
-                          : 'bg-slate-800 text-slate-400'
+                          ? 'bg-gradient-to-r from-[#9333EA] to-[#9333EA]/80 text-white'
+                          : 'bg-gray-100 text-gray-400'
                       }`}
                     >
                       {index + 1}
@@ -68,14 +68,14 @@ export function PillarsSlide({ slide }: Props) {
                     {/* Icon */}
                     <Icon
                       className={`h-10 w-10 mb-4 ${
-                        isFocused ? 'text-amber-400' : 'text-slate-500'
+                        isFocused ? 'text-[#9333EA]' : 'text-gray-400'
                       }`}
                     />
 
                     {/* Title */}
                     <h2
                       className={`text-xl font-bold ${
-                        isFocused ? 'text-white' : 'text-slate-400'
+                        isFocused ? 'text-gray-900' : 'text-gray-400'
                       }`}
                     >
                       {pillar.title}
@@ -85,7 +85,7 @@ export function PillarsSlide({ slide }: Props) {
                     {pillar.description && (
                       <p
                         className={`mt-2 text-base ${
-                          isFocused ? 'text-slate-300' : 'text-slate-500'
+                          isFocused ? 'text-gray-600' : 'text-gray-400'
                         }`}
                       >
                         {pillar.description}

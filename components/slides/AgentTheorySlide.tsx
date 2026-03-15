@@ -46,7 +46,7 @@ const CircleNode = ({
     <div className="flex flex-col items-center gap-3">
       <div
         className={cn(
-          'z-10 flex items-center justify-center rounded-full border-2 bg-slate-900 shadow-lg',
+          'z-10 flex items-center justify-center rounded-full border-2 bg-white shadow-lg',
           sizeClasses[size],
           className
         )}
@@ -54,8 +54,8 @@ const CircleNode = ({
         {children}
       </div>
       <div className="text-center">
-        <p className="text-lg font-semibold text-white">{label}</p>
-        {sublabel && <p className="text-sm text-slate-400">{sublabel}</p>}
+        <p className="text-lg font-semibold text-gray-900">{label}</p>
+        {sublabel && <p className="text-sm text-gray-500">{sublabel}</p>}
       </div>
     </div>
   );
@@ -71,7 +71,7 @@ export function AgentTheorySlide({ slide }: Props) {
   const finalRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-50"
         color="rgba(147, 51, 234, 0.15)"
@@ -83,7 +83,7 @@ export function AgentTheorySlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -99,11 +99,11 @@ export function AgentTheorySlide({ slide }: Props) {
             <BlurFade delay={0.3} duration={0.5}>
               <div ref={userRef}>
                 <CircleNode
-                  className="border-emerald-500/50 bg-gradient-to-br from-emerald-950 to-slate-900"
+                  className="border-emerald-500/50 bg-gradient-to-br from-emerald-50 to-white"
                   label="User"
                   sublabel="Request"
                 >
-                  <User className="h-10 w-10 text-emerald-400" />
+                  <User className="h-10 w-10 text-emerald-600" />
                 </CircleNode>
               </div>
             </BlurFade>
@@ -114,12 +114,12 @@ export function AgentTheorySlide({ slide }: Props) {
             <BlurFade delay={0.4} duration={0.5}>
               <div ref={thoughtRef}>
                 <CircleNode
-                  className="border-purple-500/50 bg-gradient-to-br from-purple-950 to-slate-900 shadow-xl shadow-purple-500/20"
+                  className="border-purple-500/50 bg-gradient-to-br from-purple-50 to-white shadow-xl shadow-purple-500/20"
                   label="Reason"
                   sublabel="Analyze & Plan"
                   size="large"
                 >
-                  <Brain className="h-12 w-12 text-purple-400" />
+                  <Brain className="h-12 w-12 text-purple-600" />
                 </CircleNode>
               </div>
             </BlurFade>
@@ -130,11 +130,11 @@ export function AgentTheorySlide({ slide }: Props) {
             <BlurFade delay={0.5} duration={0.5}>
               <div ref={actionRef}>
                 <CircleNode
-                  className="border-amber-500/50 bg-gradient-to-br from-amber-950 to-slate-900"
+                  className="border-amber-500/50 bg-gradient-to-br from-amber-50 to-white"
                   label="Act"
                   sublabel="Execute Tool"
                 >
-                  <Cog className="h-10 w-10 text-amber-400" />
+                  <Cog className="h-10 w-10 text-amber-600" />
                 </CircleNode>
               </div>
             </BlurFade>
@@ -144,30 +144,30 @@ export function AgentTheorySlide({ slide }: Props) {
           <div className="absolute left-[380px] top-[48%]">
             <BlurFade delay={0.6} duration={0.5}>
               <div ref={toolsRef} className="flex flex-col items-center gap-3">
-                <div className="flex flex-col gap-3 rounded-xl border border-slate-700/50 bg-slate-900/80 p-4">
+                <div className="flex flex-col gap-3 rounded-xl border border-gray-200 bg-white p-4">
                   <div className="flex items-center gap-3">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-500/20">
-                      <FileCode className="h-4 w-4 text-blue-400" />
+                      <FileCode className="h-4 w-4 text-blue-600" />
                     </div>
-                    <span className="text-sm text-slate-300">Read / Write</span>
+                    <span className="text-sm text-gray-600">Read / Write</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-500/20">
-                      <Terminal className="h-4 w-4 text-green-400" />
+                      <Terminal className="h-4 w-4 text-green-600" />
                     </div>
-                    <span className="text-sm text-slate-300">Bash</span>
+                    <span className="text-sm text-gray-600">Bash</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-orange-500/20">
-                      <Search className="h-4 w-4 text-orange-400" />
+                      <Search className="h-4 w-4 text-orange-600" />
                     </div>
-                    <span className="text-sm text-slate-300">Search / Glob</span>
+                    <span className="text-sm text-gray-600">Search / Glob</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-cyan-500/20">
-                      <Globe className="h-4 w-4 text-cyan-400" />
+                    <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#1A7285]/20">
+                      <Globe className="h-4 w-4 text-[#1A7285]" />
                     </div>
-                    <span className="text-sm text-slate-300">Web Search</span>
+                    <span className="text-sm text-gray-600">Web Search</span>
                   </div>
                 </div>
               </div>
@@ -179,11 +179,11 @@ export function AgentTheorySlide({ slide }: Props) {
             <BlurFade delay={0.7} duration={0.5}>
               <div ref={observationRef}>
                 <CircleNode
-                  className="border-rose-500/50 bg-gradient-to-br from-rose-950 to-slate-900"
+                  className="border-rose-500/50 bg-gradient-to-br from-rose-50 to-white"
                   label="Observe"
                   sublabel="Process Results"
                 >
-                  <Eye className="h-10 w-10 text-rose-400" />
+                  <Eye className="h-10 w-10 text-rose-600" />
                 </CircleNode>
               </div>
             </BlurFade>
@@ -194,11 +194,11 @@ export function AgentTheorySlide({ slide }: Props) {
             <BlurFade delay={0.8} duration={0.5}>
               <div ref={finalRef}>
                 <CircleNode
-                  className="border-emerald-500/50 bg-gradient-to-br from-emerald-950 to-slate-900"
+                  className="border-emerald-500/50 bg-gradient-to-br from-emerald-50 to-white"
                   label="Response"
                   sublabel="Task Complete"
                 >
-                  <MessageSquare className="h-10 w-10 text-emerald-400" />
+                  <MessageSquare className="h-10 w-10 text-emerald-600" />
                 </CircleNode>
               </div>
             </BlurFade>
@@ -313,7 +313,7 @@ export function AgentTheorySlide({ slide }: Props) {
         {/* Footer */}
         <BlurFade delay={1} duration={0.5}>
           <div className="pb-6 text-center">
-            <p className="text-lg text-slate-400">
+            <p className="text-lg text-gray-500">
               The ReAct Loop
             </p>
           </div>

@@ -74,7 +74,7 @@ export function SlideHints({ slideIndex, slideType }: Props) {
       text: 'to select',
     });
     hints.push({
-      icon: <div className="px-2 py-0.5 bg-slate-700 rounded text-xs font-mono">Space</div>,
+      icon: <div className="px-2 py-0.5 bg-gray-200 rounded text-xs font-mono">Space</div>,
       text: 'to count',
       isTextIcon: true,
     });
@@ -84,21 +84,21 @@ export function SlideHints({ slideIndex, slideType }: Props) {
 
   return (
     <div className="fixed top-4 right-4 z-50">
-      <div className="flex items-center gap-4 px-3 py-1.5 rounded-lg bg-slate-800/80 backdrop-blur-sm border border-slate-700/50">
+      <div className="flex items-center gap-4 px-3 py-1.5 rounded-lg bg-white/80 backdrop-blur-sm border border-gray-200">
         {hints.map((hint, index) => (
-          <div key={index} className="flex items-center gap-1.5 text-slate-400 text-xs">
+          <div key={index} className="flex items-center gap-1.5 text-gray-500 text-xs">
             {hint.isTextIcon ? (
               hint.icon
             ) : (
-              <span className="flex items-center justify-center w-6 h-6 rounded bg-slate-700 text-slate-300">
+              <span className="flex items-center justify-center w-6 h-6 rounded bg-gray-200 text-gray-600">
                 {hint.icon}
               </span>
             )}
             <span>{hint.text}</span>
           </div>
         ))}
-        <div className="flex items-center gap-1.5 text-slate-500 text-xs border-l border-slate-700 pl-3">
-          <span className="flex items-center justify-center w-5 h-5 rounded bg-slate-700 text-slate-400 text-xs">H</span>
+        <div className="flex items-center gap-1.5 text-gray-400 text-xs border-l border-gray-200 pl-3">
+          <span className="flex items-center justify-center w-5 h-5 rounded bg-gray-200 text-gray-500 text-xs">H</span>
           <span>hide</span>
         </div>
       </div>

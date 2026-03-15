@@ -13,10 +13,10 @@ interface Props {
 }
 
 const lightRayColors: Record<string, string> = {
-  violet: 'rgba(139, 92, 246, 0.15)',
-  teal: 'rgba(6, 182, 212, 0.15)',
-  green: 'rgba(34, 197, 94, 0.15)',
-  amber: 'rgba(245, 158, 11, 0.15)',
+  violet: 'rgba(147, 51, 234, 0.15)',
+  teal: 'rgba(26, 114, 133, 0.15)',
+  green: 'rgba(74, 222, 128, 0.15)',
+  amber: 'rgba(147, 51, 234, 0.15)',
 };
 
 export function ProcessStepSlide({ slide }: Props) {
@@ -24,7 +24,7 @@ export function ProcessStepSlide({ slide }: Props) {
   const lightRayColor = lightRayColors[slide.sectionColor];
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-slate-950 text-white">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <StaticLightRays
         className="opacity-50"
         color={lightRayColor}
@@ -36,7 +36,7 @@ export function ProcessStepSlide({ slide }: Props) {
         {/* Header */}
         <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-5xl font-bold tracking-tight text-white">
+            <h1 className="text-5xl font-bold tracking-tight text-gray-900">
               {slide.headline}
             </h1>
           </BlurFade>
@@ -66,13 +66,13 @@ export function ProcessStepSlide({ slide }: Props) {
                         {slide.step.input.label}
                       </p>
                       {slide.step.input.description && (
-                        <p className="mt-1 text-sm text-slate-400">
+                        <p className="mt-1 text-sm text-gray-500">
                           {slide.step.input.description}
                         </p>
                       )}
                     </div>
                   </div>
-                  <ArrowRight className="h-8 w-8 text-slate-600" />
+                  <ArrowRight className="h-8 w-8 text-gray-300" />
                 </>
               )}
 
@@ -81,7 +81,7 @@ export function ProcessStepSlide({ slide }: Props) {
                 <div className={cn(
                   'flex flex-col items-center gap-3 rounded-xl border-2 p-8 w-80',
                   colors.border,
-                  'bg-gradient-to-br from-slate-900/80 to-slate-900/40'
+                  'bg-gradient-to-br from-white to-gray-50'
                 )}>
                   <div className={cn(
                     'flex h-16 w-16 items-center justify-center rounded-full',
@@ -97,7 +97,7 @@ export function ProcessStepSlide({ slide }: Props) {
                     <p className={cn('font-bold text-xl', colors.primary)}>
                       {slide.step.agent.name}
                     </p>
-                    <p className="mt-2 text-base text-slate-300">
+                    <p className="mt-2 text-base text-gray-600">
                       {slide.step.agent.action}
                     </p>
                   </div>
@@ -107,7 +107,7 @@ export function ProcessStepSlide({ slide }: Props) {
               {/* Output Box */}
               {slide.step.output && (
                 <>
-                  <ArrowRight className="h-8 w-8 text-slate-600" />
+                  <ArrowRight className="h-8 w-8 text-gray-300" />
                   <div className={cn(
                     'flex flex-col items-center gap-3 rounded-xl border p-6 w-64',
                     colors.border,
@@ -124,7 +124,7 @@ export function ProcessStepSlide({ slide }: Props) {
                         {slide.step.output.label}
                       </p>
                       {slide.step.output.description && (
-                        <p className="mt-1 text-sm text-slate-400">
+                        <p className="mt-1 text-sm text-gray-500">
                           {slide.step.output.description}
                         </p>
                       )}
@@ -138,10 +138,10 @@ export function ProcessStepSlide({ slide }: Props) {
           {/* Step Description */}
           <BlurFade delay={0.3} duration={0.5}>
             <div className="max-w-3xl text-center">
-              <h2 className="text-2xl font-semibold text-white">
+              <h2 className="text-2xl font-semibold text-gray-900">
                 {slide.step.title}
               </h2>
-              <p className="mt-3 text-lg text-slate-400">
+              <p className="mt-3 text-lg text-gray-500">
                 {slide.step.description}
               </p>
             </div>
@@ -154,9 +154,9 @@ export function ProcessStepSlide({ slide }: Props) {
                 <RpirIndicator highlight={slide.rpirHighlight} allActive={slide.rpirAllActive} size="md" />
               )}
               {slide.humanInLoop && (
-                <div className="flex items-center gap-2 rounded-full bg-emerald-500/20 px-4 py-2">
-                  <User className="h-5 w-5 text-emerald-400" />
-                  <span className="text-sm font-medium text-emerald-400">
+                <div className="flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2">
+                  <User className="h-5 w-5 text-emerald-600" />
+                  <span className="text-sm font-medium text-emerald-600">
                     Human in Loop
                   </span>
                 </div>
@@ -171,10 +171,10 @@ export function ProcessStepSlide({ slide }: Props) {
                 {slide.keyPoints.map((point, index) => (
                   <div
                     key={index}
-                    className="flex items-start gap-2 rounded-lg bg-slate-800/50 px-4 py-3"
+                    className="flex items-start gap-2 rounded-lg bg-gray-50 px-4 py-3"
                   >
-                    <Lightbulb className="h-5 w-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-slate-300">{point}</span>
+                    <Lightbulb className="h-5 w-5 text-[#F59E0B] flex-shrink-0 mt-0.5" />
+                    <span className="text-sm text-gray-600">{point}</span>
                   </div>
                 ))}
               </div>

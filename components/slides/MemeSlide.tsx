@@ -17,19 +17,19 @@ const iconMap = {
 };
 
 const colorMap = {
-  violet: { bg: 'from-violet-500/30 to-violet-600/10', border: 'border-violet-500/50', text: 'text-violet-400', shadow: 'shadow-violet-500/20' },
-  teal: { bg: 'from-cyan-500/30 to-cyan-600/10', border: 'border-cyan-500/50', text: 'text-cyan-400', shadow: 'shadow-cyan-500/20' },
-  green: { bg: 'from-green-500/30 to-green-600/10', border: 'border-green-500/50', text: 'text-green-400', shadow: 'shadow-green-500/20' },
-  amber: { bg: 'from-amber-500/30 to-amber-600/10', border: 'border-amber-500/50', text: 'text-amber-400', shadow: 'shadow-amber-500/20' },
+  violet: { bg: 'from-[#9333EA]/30 to-[#9333EA]/10', border: 'border-[#9333EA]/50', text: 'text-[#9333EA]', shadow: 'shadow-[#9333EA]/20' },
+  teal: { bg: 'from-[#1A7285]/30 to-[#1A7285]/10', border: 'border-[#1A7285]/50', text: 'text-[#1A7285]', shadow: 'shadow-[#1A7285]/20' },
+  green: { bg: 'from-[#4ADE80]/30 to-[#4ADE80]/10', border: 'border-[#4ADE80]/50', text: 'text-[#4ADE80]', shadow: 'shadow-[#4ADE80]/20' },
+  amber: { bg: 'from-[#F59E0B]/30 to-[#F59E0B]/10', border: 'border-[#F59E0B]/50', text: 'text-[#F59E0B]', shadow: 'shadow-[#F59E0B]/20' },
 };
 
 export function MemeSlide({ slide }: Props) {
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center bg-slate-950">
+    <div className="relative flex min-h-screen flex-col items-center justify-center bg-[#F8FAFB]">
       <Particles
         className="absolute inset-0"
         quantity={60}
-        color="#f59e0b"
+        color="#1A7285"
         size={0.8}
         staticity={40}
       />
@@ -37,7 +37,7 @@ export function MemeSlide({ slide }: Props) {
       <div className="slide-content relative z-10 flex flex-col items-center justify-center">
         {/* Headline */}
         <BlurFade delay={0.2} duration={0.8}>
-          <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-white text-center mb-20">
+          <h1 className="text-6xl md:text-7xl font-bold tracking-tight text-gray-900 text-center mb-20">
             {slide.headline}
           </h1>
         </BlurFade>
@@ -61,7 +61,7 @@ export function MemeSlide({ slide }: Props) {
                 </BlurFade>
                 {index < slide.items.length - 1 && (
                   <BlurFade delay={0.5 + index * 0.15} duration={0.4}>
-                    <ChevronRight className="h-10 w-10 text-slate-500/60 mx-4" />
+                    <ChevronRight className="h-10 w-10 text-gray-300 mx-4" />
                   </BlurFade>
                 )}
               </div>
