@@ -9,31 +9,42 @@ interface Props {
   slide: BigStatementSlideType;
 }
 
+function getInitialRevealCount(totalReveals: number) {
+  if (totalReveals === 0) return 0;
+  if (typeof window === 'undefined') return 0;
+  const isBack = sessionStorage.getItem('slide-direction') === 'back';
+  if (isBack) {
+    sessionStorage.removeItem('slide-direction');
+    return totalReveals;
+  }
+  return 0;
+}
+
 export function BigStatementSlide({ slide }: Props) {
   const totalReveals = (slide.points?.length ?? 0) + (slide.closing ? 1 : 0);
-  const [revealedCount, setRevealedCount] = useState(0);
+  const [revealedCount, setRevealedCount] = useState(() => getInitialRevealCount(totalReveals));
 
   useEffect(() => {
     if (totalReveals === 0) return;
 
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        setRevealedCount((prev) => Math.min(totalReveals, prev + 1));
-      } else if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        setRevealedCount((prev) => Math.max(0, prev - 1));
+      if (event.key === 'ArrowRight') {
+        if (revealedCount < totalReveals) {
+          event.preventDefault();
+          event.stopPropagation();
+          setRevealedCount((prev) => Math.min(totalReveals, prev + 1));
+        }
       }
     }
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [totalReveals]);
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
+  }, [totalReveals, revealedCount]);
 
   const showClosing = slide.closing && revealedCount >= (slide.points?.length ?? 0) + 1;
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-[#FAFAFA]">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-[#FAFAFA] via-[#F5F3F8] to-[#9333EA]/5">
       <Particles
         className="absolute inset-0"
         quantity={60}
@@ -42,14 +53,6 @@ export function BigStatementSlide({ slide }: Props) {
         staticity={40}
       />
       <div className="slide-content relative z-10 flex flex-col items-center justify-center px-4 text-center">
-        {slide.subtitle && (
-          <BlurFade delay={0.1} duration={0.5}>
-            <p className="font-[var(--font-heading)] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-[#1A7285] mb-4 sm:mb-6">
-              {slide.subtitle}
-            </p>
-          </BlurFade>
-        )}
-
         {slide.lines.map((line, index) => (
           <BlurFade key={index} delay={0.2 + index * 0.15} duration={0.6}>
             <p className="font-[var(--font-heading)] text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-tight text-[#212121] leading-tight">
@@ -57,6 +60,14 @@ export function BigStatementSlide({ slide }: Props) {
             </p>
           </BlurFade>
         ))}
+
+        {slide.subtitle && (
+          <BlurFade delay={0.2 + slide.lines.length * 0.15 + 0.2} duration={0.5}>
+            <p className="font-[var(--font-heading)] text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium tracking-tight text-[#1A7285] mt-6 sm:mt-8 max-w-4xl">
+              {slide.subtitle}
+            </p>
+          </BlurFade>
+        )}
 
         {slide.crossedOut && (
           <BlurFade delay={0.5 + slide.lines.length * 0.15} duration={0.5}>
@@ -75,7 +86,7 @@ export function BigStatementSlide({ slide }: Props) {
         )}
 
         {slide.points && slide.points.length > 0 && (
-          <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4 w-full max-w-3xl min-h-[120px]">
+          <div className="mt-6 sm:mt-8 space-y-3 sm:space-y-4 w-full max-w-3xl min-h-[60px]">
             {slide.points.map((point, index) => (
               <div
                 key={index}

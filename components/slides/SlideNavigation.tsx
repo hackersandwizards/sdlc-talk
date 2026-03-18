@@ -21,21 +21,26 @@ export function SlideNavigation({
 
   const goToPrev = () => {
     if (currentIndex > 0) {
+      sessionStorage.setItem('slide-direction', 'back');
       router.push(`${basePath}/${currentIndex - 1}`);
     }
   };
 
   const goToNext = () => {
     if (currentIndex < totalSlides - 1) {
+      sessionStorage.setItem('slide-direction', 'forward');
       router.push(`${basePath}/${currentIndex + 1}`);
     }
   };
 
   useEffect(() => {
+    // Bubble phase: only fires if no slide component stopped propagation
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === 'ArrowLeft' && currentIndex > 0) {
+        sessionStorage.setItem('slide-direction', 'back');
         router.push(`${basePath}/${currentIndex - 1}`);
       } else if (event.key === 'ArrowRight' && currentIndex < totalSlides - 1) {
+        sessionStorage.setItem('slide-direction', 'forward');
         router.push(`${basePath}/${currentIndex + 1}`);
       }
     }
@@ -53,13 +58,12 @@ export function SlideNavigation({
       const deltaX = touchEndX - touchStartX.current;
       const deltaY = touchEndY - touchStartY.current;
 
-      // Only trigger if horizontal swipe is dominant and significant
       if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
         if (deltaX > 0 && currentIndex > 0) {
-          // Swipe right - go to previous
+          sessionStorage.setItem('slide-direction', 'back');
           router.push(`${basePath}/${currentIndex - 1}`);
         } else if (deltaX < 0 && currentIndex < totalSlides - 1) {
-          // Swipe left - go to next
+          sessionStorage.setItem('slide-direction', 'forward');
           router.push(`${basePath}/${currentIndex + 1}`);
         }
       }
@@ -81,7 +85,6 @@ export function SlideNavigation({
 
   return (
     <>
-      {/* Mobile navigation buttons */}
       <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 sm:hidden">
         <button
           onClick={goToPrev}

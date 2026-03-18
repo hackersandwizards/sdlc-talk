@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { ArrowRight, ArrowDown, Space } from 'lucide-react';
+import { ArrowRight, ArrowDown } from 'lucide-react';
 
 interface Props {
   slideIndex: number;
@@ -58,11 +58,15 @@ export function SlideHints({ slideIndex, slideType }: Props) {
     'spec-gap',
     'quality',
     'ai-failures',
+    'evolution',
+    'pillars',
+    'regular',
+    'big-statement',
   ];
 
   if (slidesWithDownArrow.includes(slideType)) {
     hints.push({
-      icon: <ArrowDown className="h-4 w-4" />,
+      icon: <ArrowRight className="h-4 w-4" />,
       text: 'to reveal',
     });
   }

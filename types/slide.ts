@@ -35,6 +35,7 @@ export interface EvolutionStage {
   description: string;
   isHighlighted?: boolean;
   isDimmed?: boolean;
+  badge?: string;
 }
 
 export interface EvolutionSlide {
@@ -42,6 +43,7 @@ export interface EvolutionSlide {
   headline: string;
   stages: EvolutionStage[];
   static?: boolean;
+  footer?: string;
 }
 
 export interface QuestionOption {
@@ -92,6 +94,7 @@ export interface WaysSlide {
 export interface Pillar {
   title: string;
   description?: string;
+  icon?: 'brain' | 'shield' | 'wrench' | 'map' | 'graduation' | 'sparkles' | 'timer' | 'arrow-right-left' | 'users' | 'lightbulb' | 'rocket' | 'factory' | 'zap';
 }
 
 export interface PillarsSlide {

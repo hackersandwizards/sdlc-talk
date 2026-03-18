@@ -3,110 +3,172 @@
 import { useState, useEffect } from 'react';
 import { EvolutionSlide as EvolutionSlideType } from '@/types/slide';
 import { BlurFade } from '@/components/ui/blur-fade';
-import { StaticLightRays } from '@/components/ui/static-light-rays';
 import { ArrowRight } from 'lucide-react';
 
 interface Props {
   slide: EvolutionSlideType;
 }
 
+function getInitialState(stageCount: number, hasFooter: boolean, isStatic: boolean, initialIndex: number) {
+  if (isStatic) {
+    return { revealed: stageCount, active: initialIndex, footer: true };
+  }
+  if (typeof window === 'undefined') {
+    return { revealed: 0, active: -1, footer: false };
+  }
+  const isBack = sessionStorage.getItem('slide-direction') === 'back';
+  if (isBack) {
+    sessionStorage.removeItem('slide-direction');
+    return { revealed: stageCount, active: stageCount - 1, footer: hasFooter };
+  }
+  return { revealed: 0, active: -1, footer: false };
+}
+
 export function EvolutionSlide({ slide }: Props) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const initialIndex = slide.stages.findIndex((s) => s.isHighlighted);
+  const isStatic = slide.static;
+  const hasFooter = !!slide.footer;
+  const init = getInitialState(slide.stages.length, hasFooter, !!isStatic, initialIndex);
+
+  const [activeIndex, setActiveIndex] = useState(init.active);
+  const [revealedCount, setRevealedCount] = useState(init.revealed);
+  const [footerVisible, setFooterVisible] = useState(init.footer);
 
   useEffect(() => {
+    if (isStatic) return;
+
     function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === 'ArrowUp') {
-        event.preventDefault();
-        setActiveIndex((prev) => Math.max(0, prev - 1));
-      } else if (event.key === 'ArrowDown') {
-        event.preventDefault();
-        setActiveIndex((prev) => Math.min(slide.stages.length - 1, prev + 1));
+      if (event.key === 'ArrowRight') {
+        if (revealedCount < slide.stages.length) {
+          event.preventDefault();
+          event.stopPropagation();
+          setRevealedCount((prev) => {
+            const next = Math.min(slide.stages.length, prev + 1);
+            setActiveIndex(next - 1);
+            return next;
+          });
+        } else if (hasFooter && !footerVisible) {
+          event.preventDefault();
+          event.stopPropagation();
+          setFooterVisible(true);
+        }
+        // else: don't stop propagation, let SlideNavigation handle it
       }
     }
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [slide.stages.length]);
+    // Capture phase: runs before SlideNavigation's bubble handler
+    window.addEventListener('keydown', handleKeyDown, true);
+    return () => window.removeEventListener('keydown', handleKeyDown, true);
+  }, [slide.stages.length, isStatic, revealedCount, hasFooter, footerVisible]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-[#FAFAFA] text-[#212121]">
-      <StaticLightRays
-        className="opacity-70"
-        color="rgba(26, 114, 133, 0.2)"
-        blur={50}
-        length="90vh"
-      />
-
+    <div className="relative flex min-h-screen items-center justify-center bg-[#F8FAFB] text-gray-900">
       <div className="slide-content relative z-10 flex flex-col">
-        {/* Header with headline */}
-        <div className="pt-6 sm:pt-8 md:pt-12 text-center px-4">
+        <div className="pt-12 text-center">
           <BlurFade delay={0.1} duration={0.6}>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight text-[#212121]">
+            <h1 className="font-[var(--font-heading)] text-5xl font-bold tracking-tight text-[#1A7285]">
               {slide.headline}
             </h1>
           </BlurFade>
         </div>
 
-        {/* Evolution stages */}
-        <div className="flex flex-1 items-center justify-center px-4 sm:px-8 md:px-12 lg:px-16 py-4 sm:py-6 md:py-8 overflow-y-auto">
-          <div className="flex flex-col lg:flex-row items-center gap-4 sm:gap-6">
-            {slide.stages.map((stage, index) => (
-              <div key={index} className="flex flex-col lg:flex-row items-center">
-                <BlurFade delay={0.2 + index * 0.2} duration={0.5}>
-                  <div
-                    className={`relative flex h-auto w-full max-w-[280px] sm:max-w-[320px] sm:w-64 md:w-72 lg:w-80 flex-col rounded-xl sm:rounded-2xl border p-3 sm:p-6 md:p-8 backdrop-blur-sm transition-all duration-300 ${
-                      activeIndex === index
-                        ? 'border-[#1A7285]/60 bg-gradient-to-br from-[#1A7285]/5 to-white'
-                        : 'border-gray-200 bg-white hover:border-[#1A7285]/30 hover:bg-gray-50'
-                    }`}
-                  >
-                    {/* Multiplier badge */}
-                    <div
-                      className={`absolute -top-3 sm:-top-4 md:-top-5 left-1/2 -translate-x-1/2 rounded-full px-3 py-1 sm:px-4 sm:py-1.5 md:px-6 md:py-2 text-sm sm:text-lg md:text-xl lg:text-2xl font-bold ${
-                        activeIndex === index
-                          ? 'bg-gradient-to-r from-[#1A7285] to-[#9333EA] text-white'
-                          : 'bg-gray-100 text-[#6B7280]'
-                      }`}
-                    >
-                      {stage.multiplier}
-                    </div>
+        <div className="flex flex-1 items-center justify-center px-12 py-8">
+          <div className="flex flex-col items-center gap-6">
+            <div className="flex items-center gap-4">
+              {slide.stages.map((stage, index) => {
+                const isRevealed = isStatic || index < revealedCount;
+                const isActive = activeIndex === index;
 
-                    <div className="mt-3 sm:mt-5 md:mt-6 flex flex-1 flex-col items-center justify-center text-center">
-                      <h2
-                        className={`text-base sm:text-lg md:text-xl lg:text-2xl font-bold leading-tight ${
-                          activeIndex === index ? 'text-[#212121]' : 'text-[#6B7280]'
+                return (
+                  <div key={index} className={`flex items-center transition-all duration-500 ${
+                    !isStatic && !isRevealed ? 'opacity-0 translate-y-8 pointer-events-none' : 'opacity-100 translate-y-0'
+                  }`}>
+                    <BlurFade delay={isStatic ? 0.2 + index * 0.2 : 0} duration={isStatic ? 0.5 : 0.3}>
+                      <div
+                        className={`relative flex h-80 w-72 flex-col rounded-2xl border p-6 transition-all duration-300 ${
+                          isActive
+                            ? 'border-[#1A7285]/60 bg-[#1A7285]/5 shadow-lg shadow-[#1A7285]/10'
+                            : 'border-gray-200 bg-white shadow-sm'
                         }`}
                       >
-                        {stage.title}
-                      </h2>
-                      <p
-                        className={`mt-1.5 sm:mt-2 md:mt-3 text-sm sm:text-base md:text-lg lg:text-xl font-medium ${
-                          activeIndex === index ? 'text-[#1A7285]' : 'text-[#9CA3AF]'
-                        }`}
-                      >
-                        {stage.subtitle}
-                      </p>
-                      <p
-                        className={`mt-2 sm:mt-3 md:mt-4 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed ${
-                          activeIndex === index ? 'text-[#6B7280]' : 'text-[#9CA3AF]'
-                        }`}
-                      >
-                        {stage.description}
-                      </p>
-                    </div>
+                        {/* Multiplier badge */}
+                        <div
+                          className={`absolute -top-5 left-1/2 -translate-x-1/2 rounded-full px-6 py-2 text-xl font-bold transition-all duration-300 ${
+                            isActive
+                              ? 'bg-gradient-to-r from-[#1A7285] to-[#9333EA] text-white'
+                              : isRevealed
+                                ? 'bg-gray-100 text-gray-500'
+                                : 'bg-gray-100 text-gray-300'
+                          }`}
+                        >
+                          {stage.multiplier}
+                        </div>
+
+                        <div className="mt-6 mb-4 flex flex-1 flex-col items-center justify-center text-center">
+                          <h2
+                            className={`text-xl font-bold leading-tight transition-colors duration-300 ${
+                              isActive ? 'text-gray-900' : isRevealed ? 'text-gray-600' : 'text-gray-300'
+                            }`}
+                          >
+                            {stage.title}
+                          </h2>
+                          <p
+                            className={`mt-2 text-lg font-medium transition-colors duration-300 ${
+                              isActive ? 'text-[#1A7285]' : isRevealed ? 'text-gray-400' : 'text-gray-200'
+                            }`}
+                          >
+                            {stage.subtitle}
+                          </p>
+                          <p
+                            className={`mt-3 text-base leading-relaxed transition-colors duration-300 ${
+                              isActive ? 'text-gray-600' : isRevealed ? 'text-gray-400' : 'text-gray-200'
+                            }`}
+                          >
+                            {stage.description}
+                          </p>
+                        </div>
+
+                        {/* Market position badge */}
+                        {stage.badge && (
+                          <div
+                            className={`mt-auto pt-4 border-t text-center text-sm font-medium transition-colors duration-300 ${
+                              isActive
+                                ? 'border-[#1A7285]/20 text-[#1A7285]'
+                                : isRevealed
+                                  ? 'border-gray-100 text-gray-400'
+                                  : 'border-gray-50 text-gray-200'
+                            }`}
+                          >
+                            {stage.badge}
+                          </div>
+                        )}
+                      </div>
+                    </BlurFade>
+
+                    {index < slide.stages.length - 1 && (
+                      <BlurFade delay={isStatic ? 0.3 + index * 0.2 : 0} duration={isStatic ? 0.5 : 0.3}>
+                        <div className="mx-3 flex items-center">
+                          <ArrowRight className="h-8 w-8 text-gray-300" />
+                        </div>
+                      </BlurFade>
+                    )}
                   </div>
-                </BlurFade>
+                );
+              })}
+            </div>
 
-                {/* Arrow between stages */}
-                {index < slide.stages.length - 1 && (
-                  <BlurFade delay={0.3 + index * 0.2} duration={0.5}>
-                    <div className="my-2 lg:my-0 lg:mx-2 xl:mx-4 flex items-center">
-                      <ArrowRight className="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-[#9CA3AF] rotate-90 lg:rotate-0" />
-                    </div>
-                  </BlurFade>
-                )}
+            {/* Footer bar */}
+            {slide.footer && (
+              <div className={`w-full max-w-5xl transition-all duration-500 ${
+                footerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
+              }`}>
+                <div className="mt-2 rounded-xl border border-[#9333EA]/20 bg-[#9333EA]/5 px-8 py-4 text-center">
+                  <p className="text-lg font-medium text-[#9333EA]">
+                    {slide.footer}
+                  </p>
+                </div>
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
